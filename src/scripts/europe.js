@@ -16,6 +16,8 @@ displayCountries(){
     // Function to select and display all European countries
     
       const svg = document.getElementById('allSvg'); 
+      const d = document.getElementById("map");
+      d.className = "eu_class"
     
       // List of African countries
       var europeanCountries = [

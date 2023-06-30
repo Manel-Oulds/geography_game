@@ -18,6 +18,8 @@ class Map {
 
             // Get all the path elements representing countries
             const countries = document.querySelectorAll('path');
+            const d = document.getElementById("map");
+            d.className="mapC";
 
             countries.forEach(country => {
                 country.addEventListener('mouseover', function () {

@@ -18,6 +18,10 @@ displayCountries(){
 
   const svg = document.getElementById('allSvg'); 
 
+  const d = document.getElementById("map");
+  d.className = "af_class"
+    
+
   // List of African countries
   let africanCountries = [
     "Algeria",

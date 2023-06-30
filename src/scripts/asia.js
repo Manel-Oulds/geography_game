@@ -13,6 +13,8 @@ class Asia{
 // Function to select and display all African countries
 
   const svg = document.getElementById('allSvg'); 
+  const d = document.getElementById("map");
+  d.className = "as_class"
 
   // List of African countries
   var asianCountries = [

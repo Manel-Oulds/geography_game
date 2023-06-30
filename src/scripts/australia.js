@@ -12,10 +12,13 @@ displayCountries(){
     
         const spButton = document.getElementById("sp_btn");
             spButton.addEventListener("click", function() {
+              const d = document.getElementById("map");
+              d.className = "aus_class";
     
     // Function to select and display all European countries
     
       const svg = document.getElementById('allSvg'); 
+     
     
      
     
@@ -65,6 +68,8 @@ displayCountries(){
     
     
     }
+
+    
 }
 
 export default Australia;

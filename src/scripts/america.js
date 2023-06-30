@@ -9,65 +9,51 @@ class America{
 
             
 displayCountries(){
-        const americaButton = document.getElementById("america_btn");
-            americaButton.addEventListener("click", function() {
+        const americaNButton = document.getElementById("americaN_btn");
+            americaNButton.addEventListener("click", function() {
     
     // Function to select and display all African countries
     
       const svg = document.getElementById('allSvg'); 
+      const d = document.getElementById("map");
+      d.className = "nam_class"
     
       // List of American countries
-      var americanCountries = [
-      'Antigua and Barbuda',
-      'Argentina',
-      'Anguila',
-      'Bahamas',
-      'Barbados',
-      'Belize',
-      'Bolivia',
-      'Brazil',
-      'Canada',
-      'Chile',
-      'Colombia',
-      'Costa Rica',
-      'Cuba',
-      'Dominica',
-      'Dominican Republic',
-      'Ecuador',
-      'El Salvador',
-      "French Guiana",
-      'Greenland',
-      'Guatemala',
-      'Guyana',
-      'Haiti',
-      'Honduras',
-      'Iceland',
-      'Jamaica',
-      'Martinique',
-      'Mexico',
-      'Montcerrat',
-      'Nicaragua',
-      'Panama',
-      'Paraguay',
-      'Peru',
-      'Saint Kitts and Nevis',
-      'Saint Lucia',
-      'Saint Vincent and the Grenadines',
-      'Suriname',
-      'Trinidad and Tobago',
-      'United States',
-      'Uruguay',
-      'Venezuela'
-    ];
+      var americanCountriesN = [
     
+          'Antigua and Barbuda',
+          'Bahamas',
+          'Barbados',
+          'Belize',
+          'Canada',
+          'Costa Rica',
+          'Cuba',
+          'Dominica',
+          'Dominican Republic',
+          'El Salvador',
+          'Grenada',
+          'Guatemala',
+          'Haiti',
+          'Honduras',
+          'Jamaica',
+          'Mexico',
+          'Nicaragua',
+          'Panama',
+          'Saint Kitts and Nevis',
+          'Saint Lucia',
+          'Saint Vincent and the Grenadines',
+          'Trinidad and Tobago',
+          'United States'
+        ];
+      
     
     
       
     
       let americaC=[]
     
-      for(let i =0; i<americanCountries.length; i++){
-        americaC.push(americanCountries[i].toLowerCase())
+      for(let i =0; i<americanCountriesN.length; i++){
+        americaC.push(americanCountriesN[i].toLowerCase())
       }
         
     

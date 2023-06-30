@@ -6,6 +6,7 @@ import Australia from "./scripts/australia"
 import Europe from "./scripts/europe"
 import America from "./scripts/america"
 import Home from "./scripts/home"
+import AmericaS from "./scripts/americaS"
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("map")
     new Home(container)
@@ -15,4 +16,5 @@ document.addEventListener("DOMContentLoaded", () => {
     new Europe(container)
     new Australia(container)
     new America(container)
+    new AmericaS(container)
 })
