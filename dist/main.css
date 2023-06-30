@@ -143,6 +143,6 @@ h2 {
   transform: scale(2);
 }
 
-.mapC {
-  transform: scale(1);
+path:hover {
+  fill: pink;
 }

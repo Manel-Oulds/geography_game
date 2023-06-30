@@ -2,14 +2,14 @@ class Map {
     constructor(ele) {
         this.ele = ele;
         
+       
+        this.displayHome();
         this.fetchData();
     }
-
-
     fetchData() {
         let original = this.ele
-        const worldButton = document.getElementById("world_btn");
-        worldButton.addEventListener("click", function() {
+       
+        
         fetch('world.svg')
         .then(response => response.text())
         .then(svgData => {
@@ -22,27 +22,23 @@ class Map {
             d.className="mapC";
 
             countries.forEach(country => {
-                country.addEventListener('mouseover', function () {
-                    window.onmousemove = function (j) {
-                        let x = j.clientX;
-                        let y = j.clientY;
-                        document.getElementById('name').style.top = y - 60 + 'px';
-                        document.getElementById('name').style.left = x + 10 + 'px';
-                    };
-
-                    country.style.fill = 'pink';
-                    document.getElementById('name').style.opacity = 1;
-                    document.getElementById('namep').innerText = country.id;
-                });
-
-                country.addEventListener('mouseleave', function () {
-                    country.style.fill = '#ececec';
-                    document.getElementById('name').style.opacity = 0;
-                });
+                country.addEventListener('click', function () {
+                    let name = (country.id).toLowerCase();
+                    let capital= fetch(`https://restcountries.com/v3.1/name/${(country.id)}?fullText=true`).then(res => res.json()).then(data=> window.alert(`   Name: ${name}  ${data[0].flag }  \n   Capital: ${data[0].capital[0]}\n   Continent: ${data[0].continents}` ))  
+            
+                })
+                
             });
         });
-    });
-};
-    
     }
+
+    displayHome(){
+        // debugger
+        const worldButton = document.getElementById("world_btn");
+        worldButton.addEventListener("click", () => {
+            this.fetchData();
+        });
+    }
+    
+}
 export default Map;

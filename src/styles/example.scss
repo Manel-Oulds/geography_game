@@ -149,8 +149,10 @@ svg path {
   transform-origin: 85% -10% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
   transform: scale(2);
 }
-.mapC{
-    transform: scale(1);
+
+
+path:hover{
+  fill: pink;
 }
 
 
