@@ -14,7 +14,7 @@ body {
     padding: 10px;
     overflow-x: hidden;
     // overflow-y: hidden;
-    background-color: #2e1473;
+    background-color: rgb(138, 157, 197);
 }
 
 #name {
@@ -62,6 +62,7 @@ svg path {
 
   .continent-header li {
     display: inline;
+    position: sticky;
   }
 
   .continent-header button {
@@ -105,10 +106,14 @@ svg path {
     justify-content: center;
   }
 
-  #play{
+  #play{ 
+    display: flex;
     border: 2px solid #3d07cf;
     width: 25%;
+    flex-direction: column;
+    justify-content: center;
     justify-items: center;
+
   }
 
   #container{
@@ -155,5 +160,54 @@ path:hover{
   fill: pink;
 }
 
+img{
+  position: relative;
+  height:200px;
+  width:200px;
+}
+
+.bchoose{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #c4c4c6;
+  border-radius: 20px;
+    overflow: hidden;
+    
+
+   button{
+    margin: 10px;
+    height: 25px;
+    border-radius: 20px;
+    box-shadow: #3d07cf;
+  }
+
+  img{
+    width: auto;
+    border-radius: 20px;
+   
+  }
+  
+}
+
+
+
+
+.main_buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: relative;
+  @media(max-width:400px){
+    flex-direction: column;
+
+  }
+}
+
+.main_buttons div {
+  width: 23%;
+  margin-bottom: 30px;
+  flex-basis: 23%;
+  box-sizing: border-box;
+}
 
 

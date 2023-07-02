@@ -1,110 +1,131 @@
-class Africa{
-    constructor(ele){
-        this.ele=ele
-        this.displayCountries()
+class Africa {
+  constructor(ele) {
+    this.ele = ele;
+    this.displayCountries();
+    // this.fetchData();
+  }
 
-    }
+  fetchData() {
+
+    if (!document.getElementById("my_div")){
+      let my_div = document.createElement("div");
+      my_div.setAttribute("id","my_div");
+      (document.getElementById("container")).appendChild(my_div);
+      let map = document.createElement("div");
+      map.setAttribute("id","map")
+      my_div.appendChild(map);
+     }
 
 
+  if (!document.getElementById("play")){
+  let play_div = document.createElement("div");
+  play_div.setAttribute("id","play");
+  (document.getElementById("container")).appendChild(play_div);
+  play_div.style.opacity = -1}
 
-            
-displayCountries(){
-
-
-    const africaButton = document.getElementById("africa_btn");
-        africaButton.addEventListener("click", function() {
-
-// Function to select and display all African countries
-
-  const svg = document.getElementById('allSvg'); 
 
   const d = document.getElementById("map");
   d.className = "af_class"
-    
 
-  // List of African countries
-  let africanCountries = [
-    "Algeria",
-    "Angola",
-    "Benin",
-    "Botswana",
-    "Burkina Faso",
-    "Burundi",
-    "Cabo Verde",
-    "Cameroon",
-    "Central African Republic",
-    "Chad",
-    "Comoros",
-    "Côte d'Ivoire",
-    "Djibouti",
-    "Democratic Republic of the Congo",
-    "Egypt",
-    "Equatorial Guinea",
-    "Eritrea",
-    "Eswatini",
-    "Ethiopia",
-    "Gabon",
-    "Gambia",
-    "Ghana",
-    "Guinea",
-    "Guinea-Bissau",
-    "Kenya",
-    "Lesotho",
-    "Liberia",
-    "Libya",
-    "Madagascar",
-    "Malawi",
-    "Mali",
-    "Mauritania",
-    "Mauritius",
-    "Morocco",
-    "Mozambique",
-    "Namibia",
-    "Niger",
-    "Nigeria",
-    "Republic of Congo",
-    "Rwanda",
-    "Sao Tome and Principe",
-    "Senegal",
-    "Seychelles",
-    "Sierra Leone",
-    "Somalia",
-    "South Africa",
-    "South Sudan",
-    "Sudan",
-    "Tanzania",
-    "Togo",
-    "Tunisia",
-    "Uganda",
-    "Zambia",
-    "Zimbabwe"
-  ];
+    fetch('world.svg')
+      .then((response) => response.text())
+      .then((svgData) => {
+        // Add the SVG data to the DOM
+        document.getElementById('map').innerHTML = svgData;
+      })
+      .then(() => {
+        let africanCountries = [
+          "Algeria",
+          "Angola",
+          "Benin",
+          "Botswana",
+          "Burkina Faso",
+          "Burundi",
+          "Cabo Verde",
+          "Cameroon",
+          "Central African Republic",
+          "Chad",
+          "Comoros",
+          "Ivory Coast",
+          "Djibouti",
+          "Democratic Republic of the Congo",
+          "Egypt",
+          "Equatorial Guinea",
+          "Eritrea",
+          "Eswatini",
+          "Ethiopia",
+          "Gabon",
+          "Gambia",
+          "Ghana",
+          "Guinea",
+          "Guinea-Bissau",
+          "Kenya",
+          "Lesotho",
+          "Liberia",
+          "Libya",
+          "Madagascar",
+          "Malawi",
+          "Mali",
+          "Mauritania",
+          "Mauritius",
+          "Morocco",
+          "Mozambique",
+          "Namibia",
+          "Niger",
+          "Nigeria",
+          "Republic of the Congo",
+          "Rwanda",
+          "Sao Tome and Principe",
+          "Senegal",
+          "Seychelles",
+          "Sierra Leone",
+          "Somalia",
+          "South Africa",
+          "South Sudan",
+          "Sudan",
+          "Tanzania",
+          "Togo",
+          "Tunisia",
+          "Uganda",
+          "Zambia",
+          "Zimbabwe"
+        ];
+       
 
-  let africaC=[]
+        const svg = document.getElementById('map');
+        const countries = svg.querySelectorAll('path');
 
-  for(let i =0; i<africanCountries.length; i++){
-    africaC.push(africanCountries[i].toLowerCase())
+        countries.forEach((country) => {
+          const countryName = country.getAttribute('id');
+
+          if (countryName && !africanCountries.includes(countryName)) {
+            country.style.display = 'none';
+          }
+        });
+      });
   }
-    
+
+  displayCountries() {
+    const africaButton = document.getElementById('africa_btn');
+    africaButton.addEventListener('click', () => {
+      (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
+      this.fetchData();
+    });
 
 
-
-  // Loop through all the SVG elements
-  for (const element of svg.children) {
-    const countryName = element.getAttribute('id');
-
-    // Check if the country is in the list of African countries
-    if(countryName){
-    if (africaC.includes(countryName.toLowerCase())) {
-      // Display the country
-      element.style.display = 'block';
-    } else {
-      // Hide non-African countries
-      element.style.display = 'none';
-    }}
-} })
+    const africaB = document.getElementsByClassName("africa_btn");
+    if (africaB.length > 0) {
+    africaB[0].addEventListener('click', () => {
+    document.getElementsByClassName("main_buttons")[0].style.display = 'none';
+    this.fetchData();
+    });
+}
+   
 
   }
 }
 
 export default Africa;
+
+
+

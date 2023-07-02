@@ -1,70 +1,98 @@
-class AmericaS{
-    constructor(ele){
-        this.ele=ele
-        this.displayCountries()
+class AmericaS {
+  constructor(ele) {
+    this.ele = ele;
+    this.displayCountries();
+    // this.fetchData();
+  }
 
-    }
+  fetchData() {
+
+    if (!document.getElementById("my_div")){
+      let my_div = document.createElement("div");
+      my_div.setAttribute("id","my_div");
+      (document.getElementById("container")).appendChild(my_div);
+      let map = document.createElement("div");
+      map.setAttribute("id","map")
+      my_div.appendChild(map);
+     }
 
 
+  if (!document.getElementById("play")){
+  let play_div = document.createElement("div");
+  play_div.setAttribute("id","play");
+  (document.getElementById("container")).appendChild(play_div);
+  play_div.style.opacity = -1}
 
-            
-displayCountries(){
-        const americaSButton = document.getElementById("americaS_btn");
-            americaSButton.addEventListener("click", function() {
-    
-    // Function to select and display all African countries
-    
-      const svg = document.getElementById('allSvg'); 
-      const d = document.getElementById("map");
-      d.className = "sam_class"
-    
-      // List of American countries
-      var americanCountriesS = [
-    
-        'Argentina',
-        'Bolivia',
-        'Brazil',
-        'Chile',
-        'Colombia',
-        'Ecuador',
-        'Guyana',
-        'Paraguay',
-        'Peru',
-        'Suriname',
-        'Uruguay',
-        'Venezuela'
-      ];
-      
-    
-    
-      
-    
-      let americaC=[]
-    
-      for(let i =0; i<americanCountriesS.length; i++){
-        americaC.push(americanCountriesS[i].toLowerCase())
-      }
-        
-    
-    
-    
-      // Loop through all the SVG elements
-      for (const element of svg.children) {
-        const countryName = element.getAttribute('id');
-    
-        // Check if the country is in the list of African countries
-        if(countryName){
-        if (americaC.includes(countryName.toLowerCase())) {
-          // Display the country
-          element.style.display = 'block';
-        } else {
-          // Hide non-African countries
-          element.style.display = 'none';
-        }}
-      } })
-    
-    }
 
+  const d = document.getElementById("map");
+  d.className = "sam_class"
+
+    fetch('world.svg')
+      .then((response) => response.text())
+      .then((svgData) => {
+        // Add the SVG data to the DOM
+        document.getElementById('map').innerHTML = svgData;
+      })
+      .then(() => {
+        var americanCountriesS = [
+    
+          'Argentina',
+          'Bolivia',
+          'Brazil',
+          'Chile',
+          'Colombia',
+          'Ecuador',
+          'Guyana',
+          'Paraguay',
+          'Peru',
+          'Suriname',
+          'Uruguay',
+          'Venezuela'
+        ];
+       
+
+        const svg = document.getElementById('map');
+        const countries = svg.querySelectorAll('path');
+
+        countries.forEach((country) => {
+          const countryName = country.getAttribute('id');
+
+          if (countryName && !americanCountriesS.includes(countryName)) {
+            country.style.display = 'none';
+          }
+        });
+      });
+  }
+
+  displayCountries() {
+    const americaSButton = document.getElementById('americaS_btn');
+    americaSButton.addEventListener('click', () => {
+      (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
+      this.fetchData();
+    });
+
+
+    const americaSB = document.getElementsByClassName("americaS_btn");
+    if (americaSB.length > 0) {
+    americaSB[0].addEventListener('click', () => {
+    document.getElementsByClassName("main_buttons")[0].style.display = 'none';
+    this.fetchData();
+    });
 }
+   
+
+  }
+}
+
 export default AmericaS;
-    
+
+
+
+
+
+
+
+
+
+
+
