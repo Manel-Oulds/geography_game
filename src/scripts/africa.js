@@ -3,6 +3,9 @@ class Africa {
     this.ele = ele;
     this.displayCountries();
     // this.fetchData();
+    this.score_num = 0;
+    
+
   }
 
   AFRICANC = [
@@ -89,6 +92,12 @@ class Africa {
       event.target.appendChild(flagToRemove);
 
       let color = this.getRandomColor()
+      this.score_num+=1;
+      console.log(this.score_num)
+      document.querySelector(".score").textContent = this.score_num;
+      
+     
+      
     
       event.target.style.fill = color;
       console.log(document.querySelectorAll(".countryName"))
@@ -226,9 +235,13 @@ class Africa {
   displayCountries() {
     const africaButton = document.getElementById("africa_btn");
     africaButton.addEventListener("click", () => {
+      this.score_num = 0;
+      document.querySelector(".score").textContent = 0;
+      (document.getElementById("score_container")).style.display = "block";
       if (document.getElementById("play"))
         document.getElementById("play").style.opacity = 1;
       document.getElementsByClassName("main_buttons")[0].style.display = "none";
+
       this.fetchFlags();
       this.fetchData();
     });
@@ -236,6 +249,9 @@ class Africa {
     const africaB = document.getElementsByClassName("africa_btn");
     if (africaB.length > 0) {
       africaB[0].addEventListener("click", () => {
+        this.score_num= 0;
+        document.querySelector(".score").textContent = 0;
+        (document.getElementById("score_container")).style.display = "block";
         document.getElementsByClassName("main_buttons")[0].style.display = "none";
         if (document.getElementById("play"))
           document.getElementById("play").style.display = "block";

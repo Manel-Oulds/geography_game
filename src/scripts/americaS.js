@@ -3,6 +3,7 @@ class AmericaS {
     this.ele = ele;
     this.displayCountries();
     // this.fetchData();
+    this.score_num=0;
   }
 
   SA = [
@@ -49,12 +50,16 @@ class AmericaS {
       // event.target.style.backgroundImage = `url(${flagToRemove.src})`;
       // event.target.style.backgroundSize = "cover";
       let color = this.getRandomColor()
-      event.target.style.fill =color
+      event.target.style.fill =color 
+      this.score_num+=1
       console.log(document.querySelectorAll(".countryName"))
       flagsToRemove.forEach((el) => {
         
-        console.log(el)
+      
         el.style.fill = color;
+       
+      document.querySelector(".score").textContent = this.score_num;
+
       });
     }
     
@@ -188,6 +193,10 @@ return shuffledFlags;
   displayCountries() {
     const americaSButton = document.getElementById('americaS_btn');
     americaSButton.addEventListener('click', () => {
+      this.score_num= 0;
+      document.querySelector(".score").textContent = 0;
+
+      (document.getElementById("score_container")).style.display = "block";
       if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
       (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
       this.fetchData();
@@ -198,6 +207,9 @@ return shuffledFlags;
     const americaSB = document.getElementsByClassName("americaS_btn");
     if (americaSB.length > 0) {
     americaSB[0].addEventListener('click', () => {
+      this.score_num= 0;
+      document.querySelector(".score").textContent = 0;
+      (document.getElementById("score_container")).style.display = "block";
       if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
     document.getElementsByClassName("main_buttons")[0].style.display = 'none';
     this.fetchData();

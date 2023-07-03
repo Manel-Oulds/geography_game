@@ -6,6 +6,8 @@ class Home {
   
     displayHome() {
 
+      (document.getElementById("score_container")).style.display = "none";
+
       let b = document.getElementById("my_body");
       let div_buttons = document.createElement("div");
       div_buttons.classList.add("main_buttons");

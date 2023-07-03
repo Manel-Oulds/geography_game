@@ -3,6 +3,7 @@ class Europe {
     this.ele = ele;
     this.displayCountries();
     // this.fetchData();
+    this.score_num = 0;
   }
 
   EUROPEC = [
@@ -77,16 +78,21 @@ class Europe {
     // Check if dropped flag matches the country
     if (flag.id === countryName) {
       event.target.appendChild(flagToRemove);
+      this.score_num+=1
+      document.querySelector(".score").textContent = this.score_num;
     
       // event.target.style.backgroundImage = `url(${flagToRemove.src})`;
       // event.target.style.backgroundSize = "cover";
       let color = this.getRandomColor()
       event.target.style.fill =color
+      console.log(this.score_num)
       console.log(document.querySelectorAll(".countryName"))
       flagsToRemove.forEach((el) => {
         
-        console.log(el)
+        
         el.style.fill = color;
+
+      document.querySelector(".score").textContent = this.score_num;
       });
     }
     
@@ -224,6 +230,9 @@ return shuffledFlags;
   displayCountries() {
     const europeButton = document.getElementById('europe_btn');
     europeButton.addEventListener('click', () => {
+      this.score_num= 0;
+      document.querySelector(".score").textContent = 0;
+      (document.getElementById("score_container")).style.display = "block";
       if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
 
       (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
@@ -235,6 +244,9 @@ return shuffledFlags;
     const europeB = document.getElementsByClassName("europe_btn");
     if (europeB.length > 0) {
     europeB[0].addEventListener('click', () => {
+      this.score_num= 0;
+      document.querySelector(".score").textContent = 0;
+      (document.getElementById("score_container")).style.display = "block";
     document.getElementsByClassName("main_buttons")[0].style.display = 'none';
     this.fetchData();
     this.fetchFlags()

@@ -234,8 +234,26 @@ img{
   box-sizing: border-box;
 }
 
-// .div_score{
-//   display:flex;
-// }
+#score_container{
+  display:flex;
+  font-size:25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  justify-content: right;
+
+  div{
+    display: flex;
+    justify-content: right;
+  
+  border-radius: 5px;
+          .score{
+          
+            margin-left: 10px;
+            align-items: center;
+          }
+
+        }
+}
+
 
 

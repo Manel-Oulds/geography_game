@@ -8,21 +8,10 @@ class Map {
 
      fetchData() {
 
+       
 
-        //Create score input
-        // const div_score = document.createElement("div");
-        // div_score.className.add("div_score")
-        // (document.getElementById("container")).appendChild(div_score)
+      
         
-
-        // const score_name= document.createElement("p")
-        // score_name.className.add("score_name");
-        // div_score.appendChild(score_name)
-
-
-        // let score = document.createElement("p");
-        // score.className.add("score");
-        // div_score.appendChild(score);
 
       
             let original = this.ele
@@ -101,6 +90,9 @@ class Map {
         });
     
         })
+
+
+      
     
     
         
@@ -110,6 +102,7 @@ class Map {
         // debugger
         const worldButton = document.getElementById("world_btn");
         worldButton.addEventListener("click", () => {
+            (document.getElementById("score_container")).style.display = "none";
             if(document.getElementById("play")) document.getElementById("play").style.opacity= -1;
            if(document.getElementsByClassName("main_buttons")[0]) (document.getElementsByClassName("main_buttons")[0]).style.display = 'none';
             this.fetchData();
@@ -117,6 +110,7 @@ class Map {
 
         const worldB = document.getElementsByClassName("world_btn");
         worldB[0].addEventListener("click", () => {
+            (document.getElementById("score_container")).style.display = "none";
             (document.getElementsByClassName("main_buttons")[0]).style.display = 'none';
             this.fetchData();
         });

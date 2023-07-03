@@ -3,6 +3,7 @@ class Asia {
     this.ele = ele;
     this.displayCountries();
     // this.fetchData();
+    this.score_num=0;
   }
 
   ASIAC = [
@@ -88,11 +89,13 @@ class Asia {
       // event.target.style.backgroundSize = "cover";
       let color = this.getRandomColor()
       event.target.style.fill =color;
-      console.log(document.querySelectorAll(".countryName"))
       
+       this.score_num+=1
       flagsToRemove.forEach((el) => {
         
         el.style.fill = color;
+       
+      document.querySelector(".score").textContent = this.score_num;
       });
     }
     
@@ -226,6 +229,9 @@ return shuffledFlags;
   displayCountries() {
     const asiaButton = document.getElementById('asia_btn');
     asiaButton.addEventListener('click', () => {
+      document.querySelector(".score").textContent = 0;
+      this.score_num= 0;
+      (document.getElementById("score_container")).style.display = "block";
       if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
       (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
       this.fetchData();
@@ -236,6 +242,9 @@ return shuffledFlags;
     const asiaB = document.getElementsByClassName("asia_btn");
     if (asiaB.length > 0) {
     asiaB[0].addEventListener('click', () => {
+      this.score_num= 0;
+      document.querySelector(".score").textContent = 0;
+      (document.getElementById("score_container")).style.display = "block";
     document.getElementsByClassName("main_buttons")[0].style.display = 'none';
     this.fetchData();
     this.fetchFlags();

@@ -260,3 +260,20 @@ img {
   flex-basis: 23%;
   box-sizing: border-box;
 }
+
+#score_container {
+  display: flex;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  justify-content: right;
+}
+#score_container div {
+  display: flex;
+  justify-content: right;
+  border-radius: 5px;
+}
+#score_container div .score {
+  margin-left: 10px;
+  align-items: center;
+}
