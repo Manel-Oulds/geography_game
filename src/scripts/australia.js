@@ -21,6 +21,67 @@ class Australia {
   'Vanuatu'
 ];
 
+// Function to handle drag start
+handleDragStart(event) {
+  // debugger
+  event.dataTransfer.setData("text/plain", event.target.id);
+}
+
+// Function to handle drag over country
+handleDragOver(event) {
+  event.preventDefault();
+}
+
+// Function to handle drop on country
+handleDrop(event) {
+  event.preventDefault();
+
+  const flagId = event.dataTransfer.getData("text/plain");
+  const flag = document.getElementById(flagId);
+  const countryName = event.target.id;
+  const playDiv = document.querySelector("#play");
+  const flagsToRemove = document.querySelectorAll(`#${countryName.replace(/ /g, "\\ ")}`);
+  const flagToRemove = playDiv.querySelector(`#${countryName.replace(/ /g, "\\ ")}`);
+  // Check if dropped flag matches the country
+  if (flag.id === countryName) {
+    event.target.appendChild(flagToRemove);
+  
+    // event.target.style.backgroundImage = `url(${flagToRemove.src})`;
+    // event.target.style.backgroundSize = "cover";
+    let color = this.getRandomColor();
+    event.target.style.fill =color
+    console.log(document.querySelectorAll(".countryName"))
+    flagsToRemove.forEach((el) => {
+      
+  
+      el.style.fill = color;
+    });
+  }
+  
+
+  // playDiv.removeChild(flagToRemove);
+  
+    
+   else {
+    // Reset flag position if not correct
+    flag.style.left = "0";
+    flag.style.top = "0";
+  }
+}
+
+
+getRandomColor() {
+  // Generate random values for RGB components
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+
+  // Construct the color string in the RGB format
+  const color = `rgb(${r}, ${g}, ${b})`;
+
+  return color;
+}
+
   fetchData() {
 
     if (!document.getElementById("my_div")){
@@ -57,6 +118,8 @@ class Australia {
 
         countries.forEach((country) => {
           const countryName = country.getAttribute('id');
+          country.addEventListener("dragover", this.handleDragOver);
+          country.addEventListener("drop", this.handleDrop.bind(this));
 
           if (countryName && !this.SPC.includes(countryName)) {
             country.style.display = 'none';
@@ -73,35 +136,55 @@ class Australia {
     // Utiliser Promise.all pour attendre que toutes les requêtes fetch soient terminées
     Promise.all(
       this.SPC.map((country) =>
-        fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
-          .then((res) => res.json())
-          .then((data) => (flags[country] = data[0].flags["svg"]))
-      )
-    ).then(() => {
-      const playDiv = document.getElementById("play");
-      playDiv.innerHTML = ""
-      playDiv.style.display="show"
-  
-      // Obtenir six drapeaux aléatoires
-      const randomFlags = this.getRandomFlags(flags, 6);
-  
-      // Afficher les drapeaux dans l'élément play_div
-      randomFlags.forEach((flag) => {
-        const flagImg = document.createElement("img");
-        flagImg.setAttribute("src", flag);
-        playDiv.appendChild(flagImg);
-      });
-    });
-  }
-  
-  getRandomFlags(flags, count) {
-    const flagKeys = Object.keys(flags);
-    const shuffledKeys = flagKeys.sort(() => 0.5 - Math.random());
-    const randomKeys = shuffledKeys.slice(0, count);
-    const randomFlags = randomKeys.map((key) => flags[key]);
-    return randomFlags;
-  }
+      fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data[0]?.flags?.svg) {
+          flags[country] = {
+            country: country,
+            flag: data[0].flags.svg,
+          };
+        }
+      })
+  )
+).then(() => {
+  const playDiv = document.getElementById("play");
+  playDiv.innerHTML = "";
+  playDiv.style.display = "block";
 
+  // Shuffle the flags
+  const shuffledFlags = this.shuffleFlags(flags);
+
+  // Display all shuffled flags in the play_div element
+  for (const flagKey in shuffledFlags) {
+    const flag = shuffledFlags[flagKey];
+    const flagImg = document.createElement("img");
+    flagImg.setAttribute("src", flag.flag);
+    flagImg.setAttribute("id", flag.country);
+    flagImg.setAttribute("draggable", true);
+    flagImg.addEventListener("dragstart", this.handleDragStart);
+    playDiv.appendChild(flagImg);
+  }
+});
+}
+
+shuffleFlags(flags) {
+const shuffledFlags = {};
+const flagKeys = Object.keys(flags);
+
+// Fisher-Yates shuffle algorithm
+for (let i = flagKeys.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [flagKeys[i], flagKeys[j]] = [flagKeys[j], flagKeys[i]];
+}
+
+// Create a new object with shuffled flags
+flagKeys.forEach((key) => {
+  shuffledFlags[key] = flags[key];
+});
+
+return shuffledFlags;
+}
 
   displayCountries() {
     const spButton = document.getElementById('sp_btn');

@@ -7,6 +7,23 @@ class Map {
     }
 
      fetchData() {
+
+
+        //Create score input
+        // const div_score = document.createElement("div");
+        // div_score.className.add("div_score")
+        // (document.getElementById("container")).appendChild(div_score)
+        
+
+        // const score_name= document.createElement("p")
+        // score_name.className.add("score_name");
+        // div_score.appendChild(score_name)
+
+
+        // let score = document.createElement("p");
+        // score.className.add("score");
+        // div_score.appendChild(score);
+
       
             let original = this.ele
         if (!document.getElementById("my_div")){

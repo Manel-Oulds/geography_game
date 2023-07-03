@@ -58,33 +58,88 @@ class Africa {
     "Togo",
     "Tunisia",
     "Uganda",
+    "Western Sahara",
     "Zambia",
     "Zimbabwe"
   ];
 
+  // Function to handle drag start
+  handleDragStart(event) {
+    // debugger
+    event.dataTransfer.setData("text/plain", event.target.id);
+  }
 
+  // Function to handle drag over country
+  handleDragOver(event) {
+    event.preventDefault();
+  }
 
-  fetchData() {
+  // Function to handle drop on country
+  handleDrop(event) {
+    event.preventDefault();
+  
+    const flagId = event.dataTransfer.getData("text/plain");
+    const flag = document.getElementById(flagId);
+    const countryName = event.target.id;
+    const playDiv = document.querySelector("#play");
+    const flagsToRemove = document.querySelectorAll(`#${countryName.replace(/ /g, "\\ ")}`);
+    const flagToRemove = playDiv.querySelector(`#${countryName.replace(/ /g, "\\ ")}`);
+    // Check if dropped flag matches the country
+    if (flag.id === countryName) {
+      event.target.appendChild(flagToRemove);
 
-    if (!document.getElementById("my_div")){
-      let my_div = document.createElement("div");
-      my_div.setAttribute("id","my_div");
-      (document.getElementById("container")).appendChild(my_div);
-      let map = document.createElement("div");
-      map.setAttribute("id","map")
-      my_div.appendChild(map);
-     }
+      let color = this.getRandomColor()
+    
+      event.target.style.fill = color;
+      console.log(document.querySelectorAll(".countryName"))
+      flagsToRemove.forEach((el) => {
+        el.style.fill = color;
+      });
+    }
+    
 
+    // playDiv.removeChild(flagToRemove);
+    
+      
+     else {
+      // Reset flag position if not correct
+      flag.style.left = "0";
+      flag.style.top = "0";
+    }
+  }
 
-  if (!document.getElementById("play")){
-  let play_div = document.createElement("div");
-  play_div.setAttribute("id","play");
-  (document.getElementById("container")).appendChild(play_div);
+  getRandomColor() {
+    // Generate random values for RGB components
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+  
+    // Construct the color string in the RGB format
+    const color = `rgb(${r}, ${g}, ${b})`;
+  
+    return color;
   }
 
 
-  const d = document.getElementById("map");
-  d.className = "af_class"
+
+  fetchData() {
+    if (!document.getElementById("my_div")) {
+      let my_div = document.createElement("div");
+      my_div.setAttribute("id", "my_div");
+      document.getElementById("container").appendChild(my_div);
+      let map = document.createElement("div");
+      map.setAttribute("id", "map");
+      my_div.appendChild(map);
+    }
+
+    if (!document.getElementById("play")) {
+      let play_div = document.createElement("div");
+      play_div.setAttribute("id", "play");
+      document.getElementById("container").appendChild(play_div);
+    }
+
+    const d = document.getElementById("map");
+    d.className = "af_class";
 
     fetch('world.svg')
       .then((response) => response.text())
@@ -99,81 +154,96 @@ class Africa {
         countries.forEach((country) => {
           const countryName = country.getAttribute('id');
 
+          country.addEventListener("dragover", this.handleDragOver);
+          country.addEventListener("drop", this.handleDrop.bind(this));
+
           if (countryName && !this.AFRICANC.includes(countryName)) {
             country.style.display = 'none';
           }
         });
       });
-
-      
   }
-
 
   fetchFlags() {
     // Fetch Flags
     let flags = {};
   
-    // Utiliser Promise.all pour attendre que toutes les requêtes fetch soient terminées
+    // Utilize Promise.all to wait for all fetch requests to complete
     Promise.all(
       this.AFRICANC.map((country) =>
         fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
           .then((res) => res.json())
-          .then((data) => (flags[country] = data[0].flags["svg"]))
+          .then((data) => {
+            if (data[0]?.flags?.svg) {
+              flags[country] = {
+                country: country,
+                flag: data[0].flags.svg,
+              };
+            }
+          })
       )
     ).then(() => {
       const playDiv = document.getElementById("play");
-      playDiv.innerHTML = ""
-      playDiv.style.display="show"
+      playDiv.innerHTML = "";
+      playDiv.style.display = "block";
   
-      // Obtenir six drapeaux aléatoires
-      const randomFlags = this.getRandomFlags(flags, 6);
+      // Shuffle the flags
+      const shuffledFlags = this.shuffleFlags(flags);
   
-      // Afficher les drapeaux dans l'élément play_div
-      randomFlags.forEach((flag) => {
+      // Display all shuffled flags in the play_div element
+      for (const flagKey in shuffledFlags) {
+        const flag = shuffledFlags[flagKey];
         const flagImg = document.createElement("img");
-        flagImg.setAttribute("src", flag);
+        flagImg.setAttribute("src", flag.flag);
+        flagImg.setAttribute("id", flag.country);
+        flagImg.setAttribute("draggable", true);
+        flagImg.addEventListener("dragstart", this.handleDragStart);
         playDiv.appendChild(flagImg);
-      });
+      }
     });
   }
   
-  getRandomFlags(flags, count) {
+  shuffleFlags(flags) {
+    const shuffledFlags = {};
     const flagKeys = Object.keys(flags);
-    const shuffledKeys = flagKeys.sort(() => 0.5 - Math.random());
-    const randomKeys = shuffledKeys.slice(0, count);
-    const randomFlags = randomKeys.map((key) => flags[key]);
-    return randomFlags;
+  
+    // Fisher-Yates shuffle algorithm
+    for (let i = flagKeys.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [flagKeys[i], flagKeys[j]] = [flagKeys[j], flagKeys[i]];
+    }
+  
+    // Create a new object with shuffled flags
+    flagKeys.forEach((key) => {
+      shuffledFlags[key] = flags[key];
+    });
+  
+    return shuffledFlags;
   }
   
+ 
 
   displayCountries() {
-    const africaButton = document.getElementById('africa_btn');
-    africaButton.addEventListener('click', () => {
-      if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
-      (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
+    const africaButton = document.getElementById("africa_btn");
+    africaButton.addEventListener("click", () => {
+      if (document.getElementById("play"))
+        document.getElementById("play").style.opacity = 1;
+      document.getElementsByClassName("main_buttons")[0].style.display = "none";
       this.fetchFlags();
       this.fetchData();
-    
     });
-
 
     const africaB = document.getElementsByClassName("africa_btn");
     if (africaB.length > 0) {
-    africaB[0].addEventListener('click', () => {
-    document.getElementsByClassName("main_buttons")[0].style.display = 'none';
-    if (document.getElementById("play")) document.getElementById("play").style.display=show;
-    this.fetchFlags();
-    this.fetchData();
-    
-
-    });
-}
-   
-
+      africaB[0].addEventListener("click", () => {
+        document.getElementsByClassName("main_buttons")[0].style.display = "none";
+        if (document.getElementById("play"))
+          document.getElementById("play").style.display = "block";
+        this.fetchFlags();
+        this.fetchData();
+      });
+    }
   }
 }
 
 export default Africa;
-
-
-
