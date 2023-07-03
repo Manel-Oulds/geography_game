@@ -149,7 +149,7 @@ class Africa {
   displayCountries() {
     const africaButton = document.getElementById('africa_btn');
     africaButton.addEventListener('click', () => {
-      document.getElementById("play").style.opacity= 1;
+      if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
       (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
       this.fetchFlags();
       this.fetchData();

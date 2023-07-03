@@ -93,7 +93,7 @@ class Map {
         // debugger
         const worldButton = document.getElementById("world_btn");
         worldButton.addEventListener("click", () => {
-            document.getElementById("play").style.opacity= -1;
+            if(document.getElementById("play")) document.getElementById("play").style.opacity= -1;
            if(document.getElementsByClassName("main_buttons")[0]) (document.getElementsByClassName("main_buttons")[0]).style.display = 'none';
             this.fetchData();
         });

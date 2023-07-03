@@ -5,6 +5,33 @@ class America {
     // this.fetchData();
   }
 
+  NA = [
+    
+    'Antigua and Barbuda',
+    'Bahamas',
+    'Barbados',
+    'Belize',
+    'Canada',
+    'Costa Rica',
+    'Cuba',
+    'Dominica',
+    'Dominican Republic',
+    'El Salvador',
+    'Grenada',
+    'Guatemala',
+    'Haiti',
+    'Honduras',
+    'Jamaica',
+    'Mexico',
+    'Nicaragua',
+    'Panama',
+    'Saint Kitts and Nevis',
+    'Saint Lucia',
+    'Saint Vincent and the Grenadines',
+    'Trinidad and Tobago',
+    'United States'
+  ];
+
   fetchData() {
 
     if (!document.getElementById("my_div")){
@@ -21,7 +48,7 @@ class America {
   let play_div = document.createElement("div");
   play_div.setAttribute("id","play");
   (document.getElementById("container")).appendChild(play_div);
-  play_div.style.opacity = -1}
+  }
 
 
   const d = document.getElementById("map");
@@ -34,32 +61,7 @@ class America {
         document.getElementById('map').innerHTML = svgData;
       })
       .then(() => {
-        var americanCountriesN = [
-    
-          'Antigua and Barbuda',
-          'Bahamas',
-          'Barbados',
-          'Belize',
-          'Canada',
-          'Costa Rica',
-          'Cuba',
-          'Dominica',
-          'Dominican Republic',
-          'El Salvador',
-          'Grenada',
-          'Guatemala',
-          'Haiti',
-          'Honduras',
-          'Jamaica',
-          'Mexico',
-          'Nicaragua',
-          'Panama',
-          'Saint Kitts and Nevis',
-          'Saint Lucia',
-          'Saint Vincent and the Grenadines',
-          'Trinidad and Tobago',
-          'United States'
-        ];
+        
        
 
         const svg = document.getElementById('map');
@@ -68,17 +70,55 @@ class America {
         countries.forEach((country) => {
           const countryName = country.getAttribute('id');
 
-          if (countryName && !americanCountriesN.includes(countryName)) {
+          if (countryName && !this.NA.includes(countryName)) {
             country.style.display = 'none';
           }
         });
       });
   }
 
+  fetchFlags() {
+    // Fetch Flags
+    let flags = {};
+  
+    // Utiliser Promise.all pour attendre que toutes les requêtes fetch soient terminées
+    Promise.all(
+      this.NA.map((country) =>
+        fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
+          .then((res) => res.json())
+          .then((data) => (flags[country] = data[0].flags["svg"]))
+      )
+    ).then(() => {
+      const playDiv = document.getElementById("play");
+      playDiv.innerHTML = ""
+      playDiv.style.display="show"
+  
+      // Obtenir six drapeaux aléatoires
+      const randomFlags = this.getRandomFlags(flags, 6);
+  
+      // Afficher les drapeaux dans l'élément play_div
+      randomFlags.forEach((flag) => {
+        const flagImg = document.createElement("img");
+        flagImg.setAttribute("src", flag);
+        playDiv.appendChild(flagImg);
+      });
+    });
+  }
+  
+  getRandomFlags(flags, count) {
+    const flagKeys = Object.keys(flags);
+    const shuffledKeys = flagKeys.sort(() => 0.5 - Math.random());
+    const randomKeys = shuffledKeys.slice(0, count);
+    const randomFlags = randomKeys.map((key) => flags[key]);
+    return randomFlags;
+  }
+
   displayCountries() {
     const americaNButton = document.getElementById('americaN_btn');
     americaNButton.addEventListener('click', () => {
+      if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
       (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
+      this.fetchFlags();
       this.fetchData();
     });
 
@@ -86,7 +126,9 @@ class America {
     const americaNB = document.getElementsByClassName("americaN_btn");
     if (americaNB.length > 0) {
     americaNB[0].addEventListener('click', () => {
+      if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
     document.getElementsByClassName("main_buttons")[0].style.display = 'none';
+    this.fetchFlags();
     this.fetchData();
     });
 }
