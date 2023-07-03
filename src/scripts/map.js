@@ -53,6 +53,7 @@ class Map {
             countries.forEach(country => {
                 country.addEventListener("mouseover", function () {
                     let info = document.getElementById("play");
+                    info.classList.add("info");
                     info.innerText=''
                     fetch(`https://restcountries.com/v3.1/name/${(country.id)}?fullText=true`)
                     .then(res => res.json())
@@ -92,6 +93,7 @@ class Map {
         // debugger
         const worldButton = document.getElementById("world_btn");
         worldButton.addEventListener("click", () => {
+            document.getElementById("play").style.opacity= -1;
            if(document.getElementsByClassName("main_buttons")[0]) (document.getElementsByClassName("main_buttons")[0]).style.display = 'none';
             this.fetchData();
         });
