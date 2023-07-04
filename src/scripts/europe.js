@@ -263,39 +263,49 @@ flagKeys.forEach((key) => {
 
 return shuffledFlags;
 }
+
+
+
+startGame(original){
+  Swal.fire({
+    icon: 'info',
+    title: 'Drag the flag to the corresponding country in Europe',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Start Game',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      original.startTimer();
+      original.score_num = 0;
+      document.querySelector(".score").textContent = 0;
+      document.getElementById("score_container").style.display = "block";
+      if (document.getElementById("play"))
+        document.getElementById("play").style.opacity = 1;
+      document.getElementsByClassName("main_buttons")[0].style.display ="none";
+      original.fetchFlags();
+      original.fetchData();
+    } 
+  })
+
+}
   
 
   displayCountries() {
+    let original = this;
     const europeButton = document.getElementById('europe_btn');
-    europeButton.addEventListener('click', () => {
-      this.startTimer()
-      this.score_num= 0;
-      document.querySelector(".score").textContent = 0;
-      (document.getElementById("score_container")).style.display = "block";
-      if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
-
-      (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
-      this.fetchData();
-      this.fetchFlags()
+    europeButton.addEventListener("click", function() {
+      original.startGame(original);
     });
 
 
     const europeB = document.getElementsByClassName("europe_btn");
-    if (europeB.length > 0) {
-    europeB[0].addEventListener('click', () => {
-      this.startTimer()
-      this.score_num= 0;
-      document.querySelector(".score").textContent = 0;
-      
-      (document.getElementById("score_container")).style.display = "block";
-    document.getElementsByClassName("main_buttons")[0].style.display = 'none';
-    this.fetchData();
-    this.fetchFlags()
+    europeB[0].addEventListener("click", function() {
+      original.startGame(original);
     });
 }
    
 
   }
-}
+
 
 export default Europe;

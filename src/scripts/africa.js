@@ -278,47 +278,44 @@ class Africa {
   
     return shuffledFlags;
   }
+
+
+  startGame(original){
+    Swal.fire({
+      icon: 'info',
+      title: 'Drag the flag to the corresponding country in Africa',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Start Game',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        original.startTimer();
+        original.score_num = 0;
+        document.querySelector(".score").textContent = 0;
+        document.getElementById("score_container").style.display = "block";
+        if (document.getElementById("play"))
+          document.getElementById("play").style.opacity = 1;
+        document.getElementsByClassName("main_buttons")[0].style.display ="none";
+        original.fetchFlags();
+        original.fetchData();
+      } 
+    })
+
+  }
   
  
 
   displayCountries() {
-   
-
-
-    const africaButton = document.getElementById("africa_btn");
-    africaButton.addEventListener("click", () => {
-      this.startTimer();
-
-      this.score_num = 0;
-      document.querySelector(".score").textContent = 0;
-      document.getElementById("score_container").style.display = "block";
-      if (document.getElementById("play"))
-        document.getElementById("play").style.opacity = 1;
-      document.getElementsByClassName("main_buttons")[0].style.display =
-        "none";
-
-      this.fetchFlags();
-      this.fetchData();
-    });
-
-    const africaB = document.getElementsByClassName("africa_btn");
-    if (africaB.length > 0) {
-      africaB[0].addEventListener("click", () => {
-       
-        this.startTimer();
-
-
-        this.score_num = 0;
-        document.querySelector(".score").textContent = 0;
-        document.getElementById("score_container").style.display = "block";
-        document.getElementsByClassName("main_buttons")[0].style.display =
-          "none";
-        if (document.getElementById("play"))
-          document.getElementById("play").style.display = "block";
-        this.fetchFlags();
-        this.fetchData();
+      let original = this;
+      const africaButton = document.getElementById("africa_btn");
+      africaButton.addEventListener("click", function() {
+        original.startGame(original);
       });
-    }
+
+      const africaB = document.getElementsByClassName("africa_btn");
+      africaB[0].addEventListener("click", function(){
+        original.startGame(original);
+      });
   }
 }
 

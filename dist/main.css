@@ -79,12 +79,8 @@ a {
   font-size: 30px;
 }
 
-.info img {
-  position: relative;
-  width: 100%;
-}
-.info p {
-  font-size: 22px;
+.score {
+  color: darkblue;
 }
 
 svg path {
@@ -159,21 +155,28 @@ h2 {
   flex-direction: column;
   width: 25%;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: space-around;
+  justify-items: center;
   position: relative;
   overflow: scroll;
   border: 2px outset rgb(45, 18, 57);
   border-radius: 25px;
-  border-block-color: rgb(60, 5, 5);
   box-shadow: 5px 10px #888888;
   height: 500px;
+  font-size: 40px;
 }
 #play img {
   padding: 5px;
-  width: 90px;
+  width: 100px;
   height: 80px;
   border-radius: 10px;
+  text-shadow: #888888;
+  align-items: center;
+}
+#play p {
+  font-size: 25px;
+  color: rgb(3, 51, 53);
+  font-family: fantasy;
 }
 
 #container {

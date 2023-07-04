@@ -225,38 +225,50 @@ flagKeys.forEach((key) => {
 
 return shuffledFlags;
 }
-  displayCountries() {
-    const americaSButton = document.getElementById('americaS_btn');
-    americaSButton.addEventListener('click', () => {
-      this.startTimer();
-      this.score_num= 0;
-      document.querySelector(".score").textContent = 0;
 
-      (document.getElementById("score_container")).style.display = "block";
-      if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
-      (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
-      this.fetchData();
-      this.fetchFlags();
+
+
+startGame(original){
+  Swal.fire({
+    icon: 'info',
+    title: 'Drag the flag to the corresponding country in South America',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Start Game',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      original.startTimer();
+      original.score_num = 0;
+      document.querySelector(".score").textContent = 0;
+      document.getElementById("score_container").style.display = "block";
+      if (document.getElementById("play"))
+        document.getElementById("play").style.opacity = 1;
+      document.getElementsByClassName("main_buttons")[0].style.display ="none";
+      original.fetchFlags();
+      original.fetchData();
+    } 
+  })
+
+}
+
+
+  displayCountries() {
+    let original =this;
+    const americaSButton = document.getElementById('americaS_btn');
+    americaSButton.addEventListener("click", function() {
+      original.startGame(original);
     });
 
 
     const americaSB = document.getElementsByClassName("americaS_btn");
-    if (americaSB.length > 0) {
-    americaSB[0].addEventListener('click', () => {
-      this.startTimer();
-      this.score_num= 0;
-      document.querySelector(".score").textContent = 0;
-      (document.getElementById("score_container")).style.display = "block";
-      if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
-    document.getElementsByClassName("main_buttons")[0].style.display = 'none';
-    this.fetchData();
-    this.fetchFlags();
+    americaSB[0].addEventListener("click", function() {
+      original.startGame(original);
     });
 }
    
 
   }
-}
+
 
 export default AmericaS;
 

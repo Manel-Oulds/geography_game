@@ -239,42 +239,48 @@ flagKeys.forEach((key) => {
 
 return shuffledFlags;
 }
+
+
+startGame(original){
+  Swal.fire({
+    icon: 'info',
+    title: 'Drag the flag to the corresponding country in North America',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Start Game',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      original.startTimer();
+      original.score_num = 0;
+      document.querySelector(".score").textContent = 0;
+      document.getElementById("score_container").style.display = "block";
+      if (document.getElementById("play"))
+        document.getElementById("play").style.opacity = 1;
+      document.getElementsByClassName("main_buttons")[0].style.display ="none";
+      original.fetchFlags();
+      original.fetchData();
+    } 
+  })
+
+}
   
   
 
   displayCountries() {
+    let original = this;
        const americaNButton = document.getElementById('americaN_btn');
-       americaNButton.addEventListener('click', () => {
-        this.startTimer()
-        this.score_num = 0;
-      document.querySelector(".score").textContent = 0;
-      (document.getElementById("score_container")).style.display = "block";
-      if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
-      (document.getElementsByClassName("main_buttons"))[0].style.display = 'none';
-      this.fetchFlags();
-      this.fetchData();
+       americaNButton.addEventListener("click", function() {
+        original.startGame(original);
     });
-
-
     const americaNB = document.getElementsByClassName("americaN_btn");
-    if (americaNB.length > 0) {
-    americaNB[0].addEventListener('click', () => {
-      
-      this.startTimer()
-
-      this.score_num = 0;
-      document.querySelector(".score").textContent = 0;
-      (document.getElementById("score_container")).style.display = "block";
-      if(document.getElementById("play")) document.getElementById("play").style.opacity= 1;
-    document.getElementsByClassName("main_buttons")[0].style.display = 'none';
-    this.fetchFlags();
-    this.fetchData();
+    americaNB[0].addEventListener("click", function() {
+      original.startGame(original);
     });
 }
    
 
   }
-}
+
 
 export default America;
 
