@@ -1,12 +1,35 @@
+import { startTimer, stopTimer } from './timer.js';
 class Africa {
   constructor(ele) {
     this.ele = ele;
     this.displayCountries();
-    // this.fetchData();
     this.score_num = 0;
     
-
   }
+
+  startTimer() {
+    this.seconds = 30;
+    let timer = document.getElementById("timer");
+    timer.textContent = this.seconds;
+    let timerId = setInterval(() => {
+     
+      this.seconds--;
+      timer.textContent = this.seconds;
+  
+      if (this.seconds < 0) {
+        clearInterval(timerId);
+      }
+      // Add event listeners to stop buttons
+
+    const stopButtons = document.getElementsByClassName("bchoose");
+    for (let i = 0; i < stopButtons.length; i++) {
+      stopButtons[i].addEventListener("click", () => {
+        clearInterval(timerId);
+    });
+}
+    }, 1000);
+  }
+
 
   AFRICANC = [
     "Algeria",
@@ -80,6 +103,7 @@ class Africa {
   // Function to handle drop on country
   handleDrop(event) {
     event.preventDefault();
+
   
     const flagId = event.dataTransfer.getData("text/plain");
     const flag = document.getElementById(flagId);
@@ -132,6 +156,8 @@ class Africa {
 
 
   fetchData() {
+   
+
     if (!document.getElementById("my_div")) {
       let my_div = document.createElement("div");
       my_div.setAttribute("id", "my_div");
@@ -235,12 +261,15 @@ class Africa {
   displayCountries() {
     const africaButton = document.getElementById("africa_btn");
     africaButton.addEventListener("click", () => {
+      this.startTimer();
+
       this.score_num = 0;
       document.querySelector(".score").textContent = 0;
-      (document.getElementById("score_container")).style.display = "block";
+      document.getElementById("score_container").style.display = "block";
       if (document.getElementById("play"))
         document.getElementById("play").style.opacity = 1;
-      document.getElementsByClassName("main_buttons")[0].style.display = "none";
+      document.getElementsByClassName("main_buttons")[0].style.display =
+        "none";
 
       this.fetchFlags();
       this.fetchData();
@@ -249,10 +278,15 @@ class Africa {
     const africaB = document.getElementsByClassName("africa_btn");
     if (africaB.length > 0) {
       africaB[0].addEventListener("click", () => {
-        this.score_num= 0;
+       
+        this.startTimer();
+
+
+        this.score_num = 0;
         document.querySelector(".score").textContent = 0;
-        (document.getElementById("score_container")).style.display = "block";
-        document.getElementsByClassName("main_buttons")[0].style.display = "none";
+        document.getElementById("score_container").style.display = "block";
+        document.getElementsByClassName("main_buttons")[0].style.display =
+          "none";
         if (document.getElementById("play"))
           document.getElementById("play").style.display = "block";
         this.fetchFlags();

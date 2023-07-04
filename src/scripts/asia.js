@@ -6,6 +6,29 @@ class Asia {
     this.score_num=0;
   }
 
+  startTimer() {
+    this.seconds = 30;
+    let timer = document.getElementById("timer");
+    timer.textContent = this.seconds;
+    let timerId = setInterval(() => {
+     
+      this.seconds--;
+      timer.textContent = this.seconds;
+  
+      if (this.seconds < 0) {
+        clearInterval(timerId);
+      }
+      // Add event listeners to stop buttons
+
+    const stopButtons = document.getElementsByClassName("bchoose");
+    for (let i = 0; i < stopButtons.length; i++) {
+      stopButtons[i].addEventListener("click", () => {
+        clearInterval(timerId);
+    });
+}
+    }, 1000);
+  }
+
   ASIAC = [
     'Afghanistan',
     'Armenia',
@@ -229,6 +252,8 @@ return shuffledFlags;
   displayCountries() {
     const asiaButton = document.getElementById('asia_btn');
     asiaButton.addEventListener('click', () => {
+
+      this.startTimer();
       document.querySelector(".score").textContent = 0;
       this.score_num= 0;
       (document.getElementById("score_container")).style.display = "block";
@@ -242,8 +267,10 @@ return shuffledFlags;
     const asiaB = document.getElementsByClassName("asia_btn");
     if (asiaB.length > 0) {
     asiaB[0].addEventListener('click', () => {
+      this.startTimer();
       this.score_num= 0;
       document.querySelector(".score").textContent = 0;
+
       (document.getElementById("score_container")).style.display = "block";
     document.getElementsByClassName("main_buttons")[0].style.display = 'none';
     this.fetchData();

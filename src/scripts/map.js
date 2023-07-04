@@ -7,13 +7,6 @@ class Map {
     }
 
      fetchData() {
-
-       
-
-      
-        
-
-      
             let original = this.ele
         if (!document.getElementById("my_div")){
             let my_div = document.createElement("div");

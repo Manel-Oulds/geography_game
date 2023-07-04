@@ -1,10 +1,35 @@
+import Timer from "./timer";
 class Europe {
   constructor(ele) {
     this.ele = ele;
     this.displayCountries();
-    // this.fetchData();
     this.score_num = 0;
+    
+
   }
+
+  startTimer() {
+    this.seconds = 30;
+    let timer = document.getElementById("timer");
+    timer.textContent = this.seconds;
+    let timerId = setInterval(() => {
+      this.seconds--;
+      timer.textContent = this.seconds;
+  
+      if (this.seconds < 0) {
+        clearInterval(timerId);
+      }
+      // Add event listeners to stop buttons
+
+    const stopButtons = document.getElementsByClassName("bchoose");
+    for (let i = 0; i < stopButtons.length; i++) {
+      stopButtons[i].addEventListener("click", () => {
+        clearInterval(timerId);
+    });
+}
+    }, 1000);
+  }
+
 
   EUROPEC = [
     'Albania',
@@ -230,6 +255,7 @@ return shuffledFlags;
   displayCountries() {
     const europeButton = document.getElementById('europe_btn');
     europeButton.addEventListener('click', () => {
+      this.startTimer()
       this.score_num= 0;
       document.querySelector(".score").textContent = 0;
       (document.getElementById("score_container")).style.display = "block";
@@ -244,8 +270,10 @@ return shuffledFlags;
     const europeB = document.getElementsByClassName("europe_btn");
     if (europeB.length > 0) {
     europeB[0].addEventListener('click', () => {
+      this.startTimer()
       this.score_num= 0;
       document.querySelector(".score").textContent = 0;
+      
       (document.getElementById("score_container")).style.display = "block";
     document.getElementsByClassName("main_buttons")[0].style.display = 'none';
     this.fetchData();

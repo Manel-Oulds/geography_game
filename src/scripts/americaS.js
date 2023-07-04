@@ -4,8 +4,31 @@ class AmericaS {
     this.displayCountries();
     // this.fetchData();
     this.score_num=0;
+   
   }
 
+  startTimer() {
+    this.seconds = 30;
+    let timer = document.getElementById("timer");
+    timer.textContent = this.seconds;
+    let timerId = setInterval(() => {
+      
+      this.seconds--;
+      timer.textContent = this.seconds;
+  
+      if (this.seconds < 0) {
+        clearInterval(timerId);
+      }
+      // Add event listeners to stop buttons
+
+    const stopButtons = document.getElementsByClassName("bchoose");
+    for (let i = 0; i < stopButtons.length; i++) {
+      stopButtons[i].addEventListener("click", () => {
+        clearInterval(timerId);
+    });
+}
+    }, 1000);
+  }
   SA = [
     
     'Argentina',
@@ -193,6 +216,7 @@ return shuffledFlags;
   displayCountries() {
     const americaSButton = document.getElementById('americaS_btn');
     americaSButton.addEventListener('click', () => {
+      this.startTimer();
       this.score_num= 0;
       document.querySelector(".score").textContent = 0;
 
@@ -207,6 +231,7 @@ return shuffledFlags;
     const americaSB = document.getElementsByClassName("americaS_btn");
     if (americaSB.length > 0) {
     americaSB[0].addEventListener('click', () => {
+      this.startTimer();
       this.score_num= 0;
       document.querySelector(".score").textContent = 0;
       (document.getElementById("score_container")).style.display = "block";
