@@ -1,19 +1,34 @@
-import { startTimer, stopTimer } from './timer.js';
+// ES6 Modules or TypeScript
+import Swal from 'sweetalert2'
+
 class Africa {
   constructor(ele) {
     this.ele = ele;
     this.displayCountries();
     this.score_num = 0;
+      // CommonJS
+
     
   }
 
+
+
   startTimer() {
-    this.seconds = 30;
+    const Swal = require('sweetalert2')
+    this.seconds = 60;
     let timer = document.getElementById("timer");
     timer.textContent = `Time left: ${this.seconds}`
     let timerId = setInterval(() => {
      if (this.seconds=== 0) {
         clearInterval(timerId);
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Good job!',
+          text: `Your Score is :  ${this.score_num} !`,
+          confirmButtonText: '<a href="./index.html">OK!</a>'
+        })
+       
       }else{
         this.seconds--;
       timer.textContent =`Time left: ${this.seconds}` ;
@@ -110,7 +125,9 @@ class Africa {
   handleDrop(event) {
     event.preventDefault();
 
-  
+
+    // CommonJS
+   
     const flagId = event.dataTransfer.getData("text/plain");
     const flag = document.getElementById(flagId);
     const countryName = event.target.id;
@@ -265,6 +282,9 @@ class Africa {
  
 
   displayCountries() {
+   
+
+
     const africaButton = document.getElementById("africa_btn");
     africaButton.addEventListener("click", () => {
       this.startTimer();

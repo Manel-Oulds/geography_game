@@ -84,15 +84,11 @@ class Map {
     
         })
 
-
-      
-    
-    
         
     }
 
     displayHome(){
-        // debugger
+       
         const worldButton = document.getElementById("world_btn");
         worldButton.addEventListener("click", () => {
             (document.getElementById("score_container")).style.display = "none";

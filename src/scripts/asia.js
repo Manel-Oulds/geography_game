@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2'
 class Asia {
   constructor(ele) {
     this.ele = ele;
@@ -7,12 +8,19 @@ class Asia {
   }
 
   startTimer() {
-    this.seconds = 30;
+    const Swal = require('sweetalert2')
+    this.seconds = 60;
     let timer = document.getElementById("timer");
     timer.textContent = `Time left: ${this.seconds}`
     let timerId = setInterval(() => {
      if (this.seconds=== 0) {
         clearInterval(timerId);
+        Swal.fire({
+          icon: 'success',
+          title: 'Good job!',
+          text: `Your Score is :  ${this.score_num} !`,
+          confirmButtonText: '<a href="./index.html">OK!</a>'
+        })
       }else{
         this.seconds--;
       timer.textContent =`Time left: ${this.seconds}` ;
