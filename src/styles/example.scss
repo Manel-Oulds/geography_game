@@ -148,34 +148,41 @@ svg path {
   }
 
 
+  #allSvg{
+    transform-origin: 90% -20% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
+        transform: scale(1.168); /* Adjust the scale factor to zoom in or out (e.g., 2 for 200% zoom) */
+        
+}
+
+
 
 .aus_class{
-    transform-origin: 130% 100% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-        transform: scale(2); /* Adjust the scale factor to zoom in or out (e.g., 2 for 200% zoom) */
+    transform-origin: 105% 103% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
+        transform: scale(3.5); /* Adjust the scale factor to zoom in or out (e.g., 2 for 200% zoom) */
         
 }
 
 .af_class{
-    transform-origin: 55% 65% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-        transform: scale(1.9);
+    transform-origin: 48% 73% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
+        transform: scale(2.1);
 }
 
 .as_class{
-  transform-origin: 110% 1% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-        transform: scale(1.5);
+  transform-origin: 100% 15% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
+        transform: scale(1.78);
 }
 
 .nam_class{
-  transform-origin: 2% 1% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-        transform: scale(1.9);
+  transform-origin: -10% 8% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
+        transform: scale(2.2);
 }
 .sam_class{
-  transform-origin: 10% 100% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-        transform: scale(2);
+  transform-origin: 3% 110% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
+        transform: scale(2.3);
 }
 .eu_class{
-  transform-origin: 85% -10% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-  transform: scale(2);
+  transform-origin: 75% -20% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
+  transform: scale(1.9);
 }
 
 

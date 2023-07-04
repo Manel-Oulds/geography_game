@@ -11,15 +11,19 @@ class America {
   startTimer() {
     this.seconds = 30;
     let timer = document.getElementById("timer");
-    timer.textContent = this.seconds;
+    timer.textContent = `Time left: ${this.seconds}`
     let timerId = setInterval(() => {
-     
-      this.seconds--;
-      timer.textContent = this.seconds;
-  
-      if (this.seconds < 0) {
+     if (this.seconds=== 0) {
         clearInterval(timerId);
+      }else{
+        this.seconds--;
+      timer.textContent =`Time left: ${this.seconds}` ;
+      if(this.seconds<=10){
+        timer.style.color="red"
       }
+      }
+  
+     
       // Add event listeners to stop buttons
 
     const stopButtons = document.getElementsByClassName("bchoose");
