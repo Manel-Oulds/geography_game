@@ -5,13 +5,13 @@ class Australia {
     this.displayCountries();
     // this.fetchData();
     this.score_num=0;
-    
+     this.seconds = 60;
   }
 
 
   startTimer() {
     const Swal = require('sweetalert2')
-    this.seconds = 60;
+   
     let timer = document.getElementById("timer");
     timer.textContent = `Time left: ${this.seconds}`
     let timerId = setInterval(() => {
@@ -80,16 +80,18 @@ fillFlag(country,countryName,flagToRemove){
   let my_pattern = document.createElementNS(svgns,"pattern")
   let c = countryName.split(" ").join("")
   my_pattern.setAttribute("id", `background_${c}`)
-  my_pattern.setAttribute("patternUnits", "userSpaceOnUse")
-  my_pattern.setAttribute("width", "40")
-  my_pattern.setAttribute("height", "40")
+  my_pattern.setAttribute("patternContentUnits","objectBoundingBox")
+  my_pattern.setAttribute("width", "100%")
+  my_pattern.setAttribute("height", "100%")
   my_defs.appendChild(my_pattern)
   let my_flag = document.createElementNS(svgns,"image");
   my_flag.setAttribute("href", `${flagToRemove.src}`);
   my_flag.setAttribute("x", "0")
   my_flag.setAttribute("y", "0")
-  my_flag.setAttribute("width", "40")
-  my_flag.setAttribute("height", "40")
+  my_flag.setAttribute("object-fit", "cover");
+  my_flag.setAttribute("width", "1")
+  my_flag.setAttribute("height", "1")
+  my_flag.setAttribute("preserveAspectRatio", "none" );
   my_pattern.appendChild(my_flag)
 
   country.setAttribute("fill",`url(#background_${c})`)
@@ -113,7 +115,7 @@ handleDrop(event) {
     // let color = this.getRandomColor();
     // event.target.style.fill =color
     this.fillFlag(event.target,countryName,flagToRemove)
-    this.score_num+=1
+    if(this.seconds> 0) this.score_num+=1;
     
     flagsToRemove.forEach((el) => {
       
