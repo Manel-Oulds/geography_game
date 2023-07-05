@@ -121,6 +121,33 @@ class Africa {
     event.preventDefault();
   }
 
+
+  fillFlag(country,countryName,flagToRemove){
+
+    var svgns = "http://www.w3.org/2000/svg";
+
+    let svgs = document.getElementById("allSvg")
+    let my_defs = document.createElementNS(svgns,"defs")
+    svgs.appendChild(my_defs)
+    let my_pattern = document.createElementNS(svgns,"pattern")
+    let c = countryName.split(" ").join("")
+    my_pattern.setAttribute("id", `background_${c}`)
+    my_pattern.setAttribute("patternUnits", "userSpaceOnUse")
+    my_pattern.setAttribute("width", "40")
+    my_pattern.setAttribute("height", "40")
+    my_defs.appendChild(my_pattern)
+    let my_flag = document.createElementNS(svgns,"image");
+    my_flag.setAttribute("href", `${flagToRemove.src}`);
+    my_flag.setAttribute("x", "0")
+    my_flag.setAttribute("y", "0")
+    my_flag.setAttribute("width", "40")
+    my_flag.setAttribute("height", "40")
+    my_pattern.appendChild(my_flag)
+
+    country.setAttribute("fill",`url(#background_${c})`)
+
+  }
+
   // Function to handle drop on country
   handleDrop(event) {
     event.preventDefault();
@@ -136,20 +163,21 @@ class Africa {
     const flagToRemove = playDiv.querySelector(`#${countryName.replace(/ /g, "\\ ")}`);
     // Check if dropped flag matches the country
     if (flag.id === countryName) {
-      event.target.appendChild(flagToRemove);
+      // event.target.appendChild(flagToRemove);
+      playDiv.removeChild(flagToRemove)
 
       let color = this.getRandomColor()
       this.score_num+=1;
-      console.log(this.score_num)
       document.querySelector(".score").textContent = this.score_num;
       
-     
       
+      this.fillFlag(event.target,countryName,flagToRemove);
     
-      event.target.style.fill = color;
+      // event.target.style.fill = color;
       console.log(document.querySelectorAll(".countryName"))
       flagsToRemove.forEach((el) => {
-        el.style.fill = color;
+        this.fillFlag(el,countryName,flagToRemove);
+        // el.style.fill = color;
       });
     }
     
