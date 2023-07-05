@@ -6,7 +6,25 @@ class Map {
         
     }
 
+
+    playMusic(){
+        // Music player
+        var backgroundMusic = document.getElementById('backgroundMusic');
+        var playButton = document.getElementById('play_music');
+        var pauseButton = document.getElementById('pause_music');
+        backgroundMusic.play();
+
+        playButton.addEventListener('click', function() {
+            backgroundMusic.play();  // Start playing the music
+        });
+
+        pauseButton.addEventListener('click', function() {
+            backgroundMusic.pause();  // Pause the music
+        });
+    }
+
      fetchData() {
+        
             let original = this.ele
         if (!document.getElementById("my_div")){
             let my_div = document.createElement("div");
@@ -88,7 +106,7 @@ class Map {
     }
 
     displayHome(){
-       
+        this.playMusic()
         const worldButton = document.getElementById("world_btn");
         worldButton.addEventListener("click", () => {
             (document.getElementById("score_container")).style.display = "none";

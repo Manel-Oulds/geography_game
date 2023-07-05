@@ -263,5 +263,21 @@ img{
         }
 }
 
+#play_music{
+  height: 20px;
+  width: 20px;
+}
+
+#pause_music{
+  height: 20px;
+  width: 20px;
+}
+
+#music_button{
+  object-fit: contain;
+  mix-blend-mode: color-burn;
+  border: none;
+}
+
 
 

@@ -5,6 +5,7 @@ class Home {
     }
   
     displayHome() {
+      
 
       (document.getElementById("score_container")).style.display = "none";
 
