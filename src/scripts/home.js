@@ -92,7 +92,7 @@ class Home {
       let asia = document.createElement("div");
       asia.classList.add("bchoose");
       let asia_image = document.createElement("img");
-      asia_image.setAttribute("src", "asia_btn.png");
+      asia_image.setAttribute("src", "asia_btn.svg");
       asia.appendChild(asia_image);
       let asia_button = document.createElement("button");
       asia_button.classList.add("asia_btn");

@@ -10,17 +10,93 @@ $color: purple; // Define a SCSS variable
 }
 
 body {
-    margin: 10px;
-    padding: 10px;
+    margin: 0px;
+    padding: 0px;
     overflow-x: hidden;
     overflow-y: hidden;
     background-color: rgb(138, 157, 197);
 }
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
 
-a{
-  color: aquamarine;
+// body  {
+//     background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
+//   background-size:cover;
+//         -webkit-animation: slidein 100s;
+//         animation: slidein 100s;
+
+//         -webkit-animation-fill-mode: forwards;
+//         animation-fill-mode: forwards;
+
+//         -webkit-animation-iteration-count: infinite;
+//         animation-iteration-count: infinite;
+
+//         -webkit-animation-direction: alternate;
+//         animation-direction: alternate;              
+// }
+
+// @-webkit-keyframes slidein {
+// from {background-position: top; background-size:3000px; }
+// to {background-position: -100px 0px;background-size:2750px;}
+// }
+
+// @keyframes slidein {
+// from {background-position: top;background-size:3000px; }
+// to {background-position: -100px 0px;background-size:2750px;}
+
+// }
+
+body {
+  width: 100%;
+  height:100%;
+}
+
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ee7757, #a73c7e );
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.game_name{
+  font-family: cursive;
   text-decoration: none;
   font-size: 30px;
+  margin: 0;
+  color: rgba(225,225,225, .01);
+  background-image: url("https://images.unsplash.com/photo-1499195333224-3ce974eecb47?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2cf549433129d4227d1879347b9e78ce&auto=format&fit=crop&w=1248&q=80");
+  background-repeat: repeat;
+  -webkit-background-clip:text;
+  animation: animate 25s ease-in-out infinite;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+  @keyframes animate {
+    0%, 100% {
+      background-position: left top;
+    }
+    25%{
+      background-position: right bottom;
+     }
+    50% {
+      background-position: left bottom;
+    }
+    75% {
+      background-position: right top;
+    }   
 }
 
 .score{
@@ -38,38 +114,37 @@ svg path {
 
 
 .continent-header {
-    background-color: #3d07cf;
-    padding: 10px;
+  
+    background-color: #c7bbcf;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     position: sticky;
+
   }
 
   .continent-header ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+   
     display: flex;
     justify-content: right;
   }
 
   .continent-header li {
     display: inline;
-
-  }
-
-  .continent-header button {
-    background-color:#3d07cf ;
-    text-decoration: none;
+    // object-fit: contain;
+    // mix-blend-mode: color-burn;
     color: white;
-    padding: 8px 12px;
-    border: none;
-    outline: none;
-    transition: background-color 0.3s ease;
-    font-family:fantasy;
-    font-style: italic;
-    text-decoration: underline;
+    padding: 3px;
+
+    .bchoose{
+      object-fit: contain;
+      object-fit: contain;
+      mix-blend-mode: color-burn;
+    }
+
   }
+
 
   .continent-header button:hover {
     background-color: #ccc;
@@ -99,7 +174,7 @@ svg path {
   }
 
   #title{
-    margin-top: 15px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
     color: aquamarine;
@@ -129,6 +204,7 @@ svg path {
       border-radius: 10px;
       text-shadow: #888888;
       align-items: center;
+      width: auto;
     }
 
     p{
@@ -140,7 +216,7 @@ svg path {
   }
 
   #container{
-    margin-top: 60px;
+    margin-top: 30px;
     display: flex;
     justify-content: space-around;
     width:100%;
@@ -157,28 +233,28 @@ svg path {
 
 
 .aus_class{
-    transform-origin: 105% 103% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-        transform: scale(3.5); /* Adjust the scale factor to zoom in or out (e.g., 2 for 200% zoom) */
+    transform-origin: 105% 105% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
+        transform: scale(3.3); /* Adjust the scale factor to zoom in or out (e.g., 2 for 200% zoom) */
         
 }
 
 .af_class{
     transform-origin: 48% 73% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-        transform: scale(2.1);
+        transform: scale(2.0);
 }
 
 .as_class{
   transform-origin: 100% 15% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-        transform: scale(1.78);
+        transform: scale(1.7);
 }
 
 .nam_class{
   transform-origin: -10% 8% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-        transform: scale(2.2);
+        transform: scale(2.1);
 }
 .sam_class{
   transform-origin: 3% 110% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
-        transform: scale(2.3);
+        transform: scale(2.2);
 }
 .eu_class{
   transform-origin: 75% -20% ; /* Sets the origin of the transformation to the top-left corner of the SVG */
@@ -198,11 +274,22 @@ img{
 }
 
 .bchoose{
-  display: flex;
-  flex-direction: column;
-  border: 2px solid #c4c4c6;
-  border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #2f2fa5;
+    border-radius: 20px;
     overflow: hidden;
+    text-decoration: none;
+    color: rgb(59, 57, 57);
+    padding: 8px 12px;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+    font-family:fantasy;
+    font-style: italic;
+    text-decoration: underline;
+
+   
     
 
    button{
@@ -210,6 +297,9 @@ img{
     height: 25px;
     border-radius: 20px;
     box-shadow: #3d07cf;
+    object-fit: contain;
+    object-fit: contain;
+  mix-blend-mode: color-burn;
   }
 
   img{
@@ -232,6 +322,7 @@ img{
     flex-direction: column;
 
   }
+  
 }
 
 .main_buttons div {
@@ -242,7 +333,7 @@ img{
 }
 
 #score_container{
-  
+   margin: 10px;
   display: flex;
   flex-direction: row;
   font-size:25px;
@@ -255,7 +346,7 @@ img{
     justify-content: right;
   
           .score{
-            margin-left: 10px;
+           margin-right: 10px;
             align-items: center;
           }
           
@@ -263,20 +354,42 @@ img{
         }
 }
 
-#play_music{
-  height: 20px;
-  width: 20px;
+.choose img{
+  mix-blend-mode: color-burn;
 }
 
-#pause_music{
-  height: 20px;
-  width: 20px;
-}
+#play_music, #pause_music, #github, #linkedin{
+          height: 25px;
+          width: 25px;
+          background-color: none;
+          border:none;
+          padding-right: 15px;
+        }
 
-#music_button{
+#music_button, #github_button, #linkedin_button{
   object-fit: contain;
   mix-blend-mode: color-burn;
   border: none;
+  padding: 5px;
+}
+
+.wave-animation {
+  display: inline-block;
+  animation: wave 1.5s linear infinite;
+  font-family: cursive;
+}
+
+@keyframes wave {
+  0% { transform: translateY(0); }
+  20% { transform: translateY(-10px); }
+  50% { transform: translateY(-20px); }
+  70% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+
+.info{
+  padding:5px;
 }
 
 

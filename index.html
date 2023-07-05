@@ -5,10 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="./my_icon.jpeg" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.js"></script>
-    <title>Project Name</title>
+    <title>Flag Frenzy: Match 'Em Up!</title>
   </head>
 
   <body id ="my_body">
@@ -19,7 +22,7 @@
 
 
     <nav class="continent-header">
-      <h2><a href='./index.html'><i style="font-size:24px" class="fa">&#xf0ac;</i> My World Geography Game</a></h2>
+      <h2><a class="game_name" href='./index.html'><i style="font-size:24px" class="fa">&#xf0ac;</i> Flag Frenzy </a></h2>
 
       <ul >
         <li><button type="button" class="bchoose" id="world_btn">World Map</button></li> 
@@ -29,12 +32,16 @@
         <li><button type="button" class="bchoose" id="americaS_btn">South America</button></li>
         <li><button type="button" class="bchoose" id="sp_btn">Oceania</button></li>
         <li><button type="button" class="bchoose" id="europe_btn">Europe</button></li>
+        <li><button id="github_button"  ><a   href="https://github.com/Manel-Oulds/geography_game "> <img id="github" src = "github.svg"></a></button></li>
+        <li><button id="linkedin_button" ><a  href=" https://www.linkedin.com/in/manel-ould-saada-134231282/" ><img id="linkedin" src="linkedin.svg"></a></button></li>
+      
       </ul>
     </nav>
 
     
 
-    <h2 id="title">Let's play and learn geography! &#128516 </h2>
+    <!-- <h2 id="title">Let's play and learn geography! &#128516 </h2> -->
+    <span id="title" class="wave-animation">Let's play and learn geography! &#128516</span>
     
     <div id="audio_background">
 
@@ -45,35 +52,24 @@
 
     </div>
 
-    <div id="score_container">
-
-      
-        
+    <div id="score_container">        
         <p id="timer"></p>
-
-        
-      
       <div >
         <p>Score: </p>
         <p class ="score"> 0</p>
-      </div>
-
-     
-
-    
-     
-        
-         
+      </div>  
     </div>
     
 
   <div id="container">
+
+      
     
    
   </div>
 
     
-    
+  
   </body>
 
 </html>
