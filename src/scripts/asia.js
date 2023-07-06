@@ -10,7 +10,7 @@ class Asia {
 
   startTimer() {
     const Swal = require('sweetalert2')
-   this.seconds = 6;
+   this.seconds = 100;
     let timer = document.getElementById("timer");
     
     timer.textContent = `Time left: ${this.seconds}`

@@ -16,7 +16,7 @@ class Africa {
 
   startTimer() {
     const Swal = require('sweetalert2')
-    this.seconds = 60;
+    this.seconds = 180;
     let timer = document.getElementById("timer");
     
     timer.textContent = `Time left: ${this.seconds}`

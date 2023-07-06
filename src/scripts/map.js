@@ -42,10 +42,6 @@ class Map {
         (document.getElementById("container")).appendChild(play_div);
         play_div.style.opacity = -1}
 
-        
-
-        
-        
          
         fetch('./assets/world.svg')
         .then(response => response.text())
@@ -84,7 +80,7 @@ class Map {
                         let flag = document.createElement("p"); 
                         flag.classList.add("info")
                         var languages = 
-                        flag.innerText = `Common Name: ${data[0].name.common}  \n  Official Name: ${data[0].name.official}   \n   Capital: ${data[0].capital[0]}\n   Continent: ${data[0].continents}\n Language: ${Object.values(data[0].languages)}\n Population :${data[0].population}\n`;
+                        flag.innerText = `Common Name: ${data[0].name.common}  \n  Official Name: ${data[0].name.official}   \n  Capital: ${data[0].capital[0]}\n   Continent: ${data[0].continents}\n Language: ${Object.values(data[0].languages)}\n Population :${data[0].population}\n`;
                         
                         info.appendChild(flag);
                         
