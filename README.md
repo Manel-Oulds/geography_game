@@ -52,7 +52,7 @@ In <b>Flag Frenzy</b>, users will be able to:
 
 </ul>
 
-<h2>Future Implementations:<h2>
+<h2>Future Implementations:</h2>
 <ul>
     <li> Add more informations to the country Guide</li>
     <li> Add capitals, language games </li>
