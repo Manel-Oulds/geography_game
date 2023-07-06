@@ -14,11 +14,7 @@ class Australia {
    this.seconds = 60;
       
     let timer = document.getElementById("timer");
-    if(this.seconds<=10){
-      timer.style.color="red"
-    }else{
-      timer.style.color="white"
-    }
+    
     timer.textContent = `Time left: ${this.seconds}`
     let timerId = setInterval(() => {
      if (this.seconds=== 0) {
