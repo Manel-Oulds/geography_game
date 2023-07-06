@@ -10,7 +10,7 @@ class AmericaS {
 
   startTimer() {
     const Swal = require('sweetalert2')
-    this.seconds = 10;
+    this.seconds = 15;
     let timer = document.getElementById("timer");
    
     timer.textContent = `Time left: ${this.seconds}`
