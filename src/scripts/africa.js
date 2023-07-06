@@ -7,7 +7,7 @@ class Africa {
     this.displayCountries();
     this.score_num = 0;
       // CommonJS
-      this.seconds = 60;
+     
 
     
   }
@@ -16,8 +16,13 @@ class Africa {
 
   startTimer() {
     const Swal = require('sweetalert2')
-    
+    this.seconds = 60;
     let timer = document.getElementById("timer");
+    if(this.seconds<=10){
+      timer.style.color="red"
+    }else{
+      timer.style.color="white"
+    }
     timer.textContent = `Time left: ${this.seconds}`
     let timerId = setInterval(() => {
      if (this.seconds=== 0) {
@@ -25,17 +30,15 @@ class Africa {
 
         Swal.fire({
           icon: 'success',
-          title: 'Good job!',
+          title: 'Time is up!',
           text: `Your Score is :  ${this.score_num} !`,
-          confirmButtonText: '<a href="./index.html">OK!</a>'
+          confirmButtonText: '<a href="././index.html">OK!</a>'
         })
        
       }else{
         this.seconds--;
       timer.textContent =`Time left: ${this.seconds}` ;
-      if(this.seconds<=10){
-        timer.style.color="red"
-      }
+      
       }
 
       
@@ -231,7 +234,7 @@ class Africa {
     const d = document.getElementById("map");
     d.className = "af_class";
 
-    fetch('world.svg')
+    fetch('./assets/world.svg')
       .then((response) => response.text())
       .then((svgData) => {
         // Add the SVG data to the DOM
@@ -330,13 +333,12 @@ class Africa {
         document.getElementsByClassName("main_buttons")[0].style.display ="none";
         original.fetchFlags();
         original.fetchData();
-      } 
+      } else{
+        window.location.href = "././index.html"
+      }
     })
 
   }
-  
- 
-
   displayCountries() {
       let original = this;
       const africaButton = document.getElementById("africa_btn");

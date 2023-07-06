@@ -20,7 +20,7 @@ class Home {
       let world = document.createElement("div");
       world.classList.add("bchoose");
       let world_image = document.createElement("img");
-      world_image.setAttribute("src", "world_btn.png");
+      world_image.setAttribute("src", "./assets/world_btn.png");
       world.appendChild(world_image);
       let world_button = document.createElement("button");
       world_button.classList.add("world_btn");
@@ -32,7 +32,7 @@ class Home {
       let africa = document.createElement("div");
       africa.classList.add("bchoose");
       let africa_image = document.createElement("img");
-      africa_image.setAttribute("src", "africa_btn.png");
+      africa_image.setAttribute("src", "./assets/africa_btn.png");
       africa.appendChild(africa_image);
       let africa_button = document.createElement("button");
       africa_button.classList.add("africa_btn");
@@ -44,7 +44,7 @@ class Home {
       let americaS = document.createElement("div");
       americaS.classList.add("bchoose");
       let americaS_image = document.createElement("img");
-      americaS_image.setAttribute("src", "s_america_btn.png");
+      americaS_image.setAttribute("src", "./assets/s_america_btn.png");
       americaS.appendChild(americaS_image);
       let americaS_button = document.createElement("button");
       americaS_button.classList.add("americaS_btn");
@@ -56,7 +56,7 @@ class Home {
       let americaN = document.createElement("div");
       americaN.classList.add("bchoose");
       let americaN_image = document.createElement("img");
-      americaN_image.setAttribute("src", "n_america_btn.png");
+      americaN_image.setAttribute("src", "./assets/n_america_btn.png");
       americaN.appendChild(americaN_image);
       let americaN_button = document.createElement("button");
       americaN_button.classList.add("americaN_btn");
@@ -68,7 +68,7 @@ class Home {
       let europe = document.createElement("div");
       europe.classList.add("bchoose");
       let europe_image = document.createElement("img");
-      europe_image.setAttribute("src", "europe_btn.png");
+      europe_image.setAttribute("src", "./assets/europe_btn.png");
       europe.appendChild(europe_image);
       let europe_button = document.createElement("button");
       europe_button.classList.add("europe_btn");
@@ -80,7 +80,7 @@ class Home {
       let oceania = document.createElement("div");
       oceania.classList.add("bchoose");
       let oceania_image = document.createElement("img");
-      oceania_image.setAttribute("src", "oceania_btn.png");
+      oceania_image.setAttribute("src", "./assets/oceania_btn.png");
       oceania.appendChild(oceania_image);
       let oceania_button = document.createElement("button");
       oceania_button.classList.add("sp_btn");
@@ -92,7 +92,7 @@ class Home {
       let asia = document.createElement("div");
       asia.classList.add("bchoose");
       let asia_image = document.createElement("img");
-      asia_image.setAttribute("src", "asia_btn.svg");
+      asia_image.setAttribute("src", "./assets/asia_btn.svg");
       asia.appendChild(asia_image);
       let asia_button = document.createElement("button");
       asia_button.classList.add("asia_btn");

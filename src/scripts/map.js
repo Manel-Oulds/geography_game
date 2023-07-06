@@ -47,7 +47,7 @@ class Map {
         
         
          
-        fetch('world.svg')
+        fetch('./assets/world.svg')
         .then(response => response.text())
         .then(svgData => {
             // Add the SVG data to the DOM

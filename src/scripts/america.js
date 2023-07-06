@@ -4,30 +4,33 @@ class America {
     this.ele = ele;
     this.displayCountries();
    this.score_num = 0;
-   this.seconds = 60;
+   
 
   }
 
   startTimer() {
     const Swal = require('sweetalert2')
-    
+    this.seconds = 60;
     let timer = document.getElementById("timer");
+    if(this.seconds<=10){
+      timer.style.color="red"
+    }else{
+      timer.style.color="white"
+    }
     timer.textContent = `Time left: ${this.seconds}`
     let timerId = setInterval(() => {
      if (this.seconds=== 0) {
         clearInterval(timerId);
         Swal.fire({
           icon: 'success',
-          title: 'Good job!',
+          title: 'Time is up!',
           text: `Your Score is :  ${this.score_num} !`,
-          confirmButtonText: '<a href="./index.html">OK!</a>'
+          confirmButtonText: '<a href="././index.html">OK!</a>'
         })
       }else{
         this.seconds--;
       timer.textContent =`Time left: ${this.seconds}` ;
-      if(this.seconds<=10){
-        timer.style.color="red"
-      }
+      
       }
   
      
@@ -179,7 +182,7 @@ class America {
   const d = document.getElementById("map");
   d.className = "nam_class"
 
-    fetch('world.svg')
+    fetch('./assets/world.svg')
       .then((response) => response.text())
       .then((svgData) => {
         // Add the SVG data to the DOM
@@ -280,7 +283,9 @@ startGame(original){
       document.getElementsByClassName("main_buttons")[0].style.display ="none";
       original.fetchFlags();
       original.fetchData();
-    } 
+    } else{
+      window.location.href = "././index.html"
+    }
   })
 
 }
