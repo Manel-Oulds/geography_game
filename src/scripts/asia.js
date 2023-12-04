@@ -297,6 +297,8 @@ class Asia {
         document.getElementsByClassName("main_buttons")[0].style.display =
           "none";
           document.getElementsByClassName("small-container")[0].style.display ="none";
+          document.getElementById("title").style.display =
+          "none";
         original.fetchFlags();
         original.fetchData();
       } else {

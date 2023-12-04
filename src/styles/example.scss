@@ -118,7 +118,9 @@ svg path {
     padding: 15px;
     display: flex;
     justify-content: space-between;
-    position: sticky;
+    position: relative;
+    width: 100%;
+    top: 0;
 
   }
 

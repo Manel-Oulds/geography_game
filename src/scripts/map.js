@@ -117,7 +117,9 @@ class Map {
         worldB[0].addEventListener("click", () => {
             (document.getElementById("score_container")).style.display = "none";
             (document.getElementsByClassName("main_buttons")[0]).style.display = 'none';
-            document.getElementsByClassName("small-container")[0].style.display ="none";;
+            document.getElementsByClassName("small-container")[0].style.display ="none";
+            document.getElementById("title").style.display =
+            "none";
             this.fetchData();
         });
         

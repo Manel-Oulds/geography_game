@@ -11,7 +11,7 @@ class Africa {
 
   startTimer() {
     const Swal = require("sweetalert2");
-    this.seconds = 800;
+    this.seconds = 180;
     let timer = document.getElementById("timer");
 
     timer.textContent = `Time left: ${this.seconds}`;
@@ -310,6 +310,8 @@ class Africa {
         if (document.getElementById("play"))
           document.getElementById("play").style.opacity = 1;
         document.getElementsByClassName("main_buttons")[0].style.display =
+          "none";
+          document.getElementById("title").style.display =
           "none";
         original.fetchFlags();
         original.fetchData();
