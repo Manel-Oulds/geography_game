@@ -146,7 +146,7 @@
     }
   }
   .score {
-    color: darkblue;
+    color: rgb(216, 216, 243);
   }
   
   svg path {
@@ -155,10 +155,12 @@
   
   .continent-header {
     background-color: rgba(193, 186, 186, 0.7);
-    padding: 15px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
-    position: sticky;
+    position: fixed;
+    width: 100%;
+    top: 0;
   }
   
   .continent-header ul {
@@ -201,7 +203,7 @@
   }
   
   #title {
-    margin-top: 55px;
+    margin-top: 70px;
     display: flex;
     justify-content: center;
     color: #dbd8e5;
@@ -556,6 +558,7 @@
     width: fit-content;
     align-items: center;
     width: fit-content;
+   
   
   }
   
@@ -563,8 +566,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #0e4495;
+    background-color: rgba(14, 68, 149, 0.696);
     max-width: 400px;
+    border-radius: 10px;
   }
   
   .image-text {
@@ -608,11 +612,5 @@
   }
   
   #play, #my_div{
-    background-color: rgb(42, 42, 112)
+    background-color: rgba(14, 68, 149, 0.696);
   }
-  
-  
-  
-  
-  
-  
