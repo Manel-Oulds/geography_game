@@ -9,7 +9,7 @@ import AmericaS from "./scripts/americaS"
 import Home from "./scripts/home"
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("map")
-    new Home(container)
+    // new Home(container)
     new Map(container)
     new Asia(container)
     new Africa(container)
