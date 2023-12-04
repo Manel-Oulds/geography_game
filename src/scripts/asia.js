@@ -296,6 +296,7 @@ class Asia {
           document.getElementById("play").style.opacity = 1;
         document.getElementsByClassName("main_buttons")[0].style.display =
           "none";
+          document.getElementsByClassName("small-container")[0].style.display ="none";
         original.fetchFlags();
         original.fetchData();
       } else {
