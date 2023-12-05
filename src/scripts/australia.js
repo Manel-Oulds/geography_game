@@ -15,7 +15,9 @@ class Australia {
       
     let timer = document.getElementById("timer");
     
-    timer.textContent = `Time left: ${this.seconds}`
+    let div_timer = `<div id="timer" ><img style="width:50px; height:50px; " src="../assets/timer.png"/> <p> ${this.seconds} </p></div>`;
+    // timer.innerHTML = `<img style="width:50px; height:50px; padding: 5px" src="../assets/timer.png"/> ${this.seconds}`; 
+    timer.innerHTML  = div_timer;  
     let timerId = setInterval(() => {
      if (this.seconds=== 0) {
         clearInterval(timerId);
@@ -27,7 +29,9 @@ class Australia {
         })
       }else{
         this.seconds--;
-      timer.textContent =`Time left: ${this.seconds}` ;
+        let div_timer = `<div id="timer" ><img style="width:50px; height:50px; " src="../assets/timer.png"/> <p> ${this.seconds} </p></div>`;
+        // timer.innerHTML = `<img style="width:50px; height:50px; padding: 5px" src="../assets/timer.png"/> ${this.seconds}`; 
+        timer.innerHTML  = div_timer;  
       
       }
   
@@ -267,7 +271,7 @@ startGame(original){
       original.startTimer();
       original.score_num = 0;
       document.querySelector(".score").textContent = 0;
-      document.getElementById("score_container").style.display = "block";
+      document.getElementById("score_container").style.display = "flex";
       if (document.getElementById("play"))
         document.getElementById("play").style.opacity = 1;
       document.getElementsByClassName("main_buttons")[0].style.display ="none";

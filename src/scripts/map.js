@@ -110,6 +110,9 @@ class Map {
             (document.getElementById("score_container")).style.display = "none";
             if(document.getElementById("play")) document.getElementById("play").style.opacity= -1;
            if(document.getElementsByClassName("main_buttons")[0]) (document.getElementsByClassName("main_buttons")[0]).style.display = 'none';
+           document.getElementsByClassName("small-container")[0].style.display ="none";
+      document.getElementById("title").style.display =
+      "none";
             this.fetchData();
         });
 
