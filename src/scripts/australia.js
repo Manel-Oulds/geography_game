@@ -222,7 +222,7 @@ getRandomColor() {
 ).then(() => {
   const playDiv = document.getElementById("play");
   playDiv.innerHTML = "";
-  playDiv.style.display = "block";
+  playDiv.style.display = "flex";
 
   // Shuffle the flags
   const shuffledFlags = this.shuffleFlags(flags);

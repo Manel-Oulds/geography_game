@@ -322,7 +322,7 @@ img {
   color: #fff;
   justify-content: center;
   align-items: center;
-  width: fit-content;
+  width: 120px;
   background: #1f8da385;;;
   border-radius: 10px;
 
@@ -387,6 +387,7 @@ img {
 
 .info {
   padding: 5px;
+  color: white;
 }
 
 /*! main.css *************************************************************************************************************************************!*\
@@ -629,7 +630,7 @@ h2 {
 }
 #play p {
   font-size: 25px;
-  color: rgb(143, 147, 148);
+  color: white;
   font-family: fantasy;
 }
 
@@ -773,6 +774,10 @@ img {
   align-items: center;
 }
 
+#score_container p{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
 
 
 .choose img {
@@ -829,6 +834,10 @@ img {
 .info {
   padding: 5px;
   
+}
+
+.info p{
+  color: white;;
 }
 
 
