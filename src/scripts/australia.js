@@ -15,7 +15,7 @@ class Australia {
       
     let timer = document.getElementById("timer");
     
-    let div_timer = `<div id="timer" ><img style="width:50px; height:50px; " src="../assets/timer.png"/> <p> ${this.seconds} </p></div>`;
+    let div_timer = `<img style="width:50px; height:50px; " src="../assets/timer.png"/> <p> ${this.seconds} </p>`;
     // timer.innerHTML = `<img style="width:50px; height:50px; padding: 5px" src="../assets/timer.png"/> ${this.seconds}`; 
     timer.innerHTML  = div_timer;  
     let timerId = setInterval(() => {
@@ -29,7 +29,7 @@ class Australia {
         })
       }else{
         this.seconds--;
-        let div_timer = `<div id="timer" ><img style="width:50px; height:50px; " src="../assets/timer.png"/> <p> ${this.seconds} </p></div>`;
+        let div_timer = `<img style="width:50px; height:50px; " src="../assets/timer.png"/> <p> ${this.seconds} </p>`;
         // timer.innerHTML = `<img style="width:50px; height:50px; padding: 5px" src="../assets/timer.png"/> ${this.seconds}`; 
         timer.innerHTML  = div_timer;  
       

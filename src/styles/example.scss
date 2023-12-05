@@ -317,13 +317,14 @@ img {
   border: 3px solid white;
   margin: auto;
   display: flex;
-  // flex-direction: column;
   font-size: 25px;
   font-family: Verdana,Geneva,Tahoma,sans-serif;
   color: #fff;
   justify-content: center;
   align-items: center;
   width: fit-content;
+  background: #1f8da385;;;
+  border-radius: 10px;
 
   // div {
   //   display: flex;
@@ -767,6 +768,12 @@ img {
   margin-right: 10px;
   align-items: center;
 }
+#score_container div #timer {
+  margin-right: 10px;
+  align-items: center;
+}
+
+
 
 .choose img {
   mix-blend-mode: color-burn;
@@ -942,7 +949,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #0e4495;
+  background-color: #1f8da385;
   max-width: 400px;
 }
 
@@ -987,5 +994,9 @@ ul {
 
 #play,
 #my_div {
-  background-color: rgb(42, 42, 112);
+  background-color: #1f8da385;;
+}
+#timer{
+  width: 100%;
+  height: 100%;
 }
