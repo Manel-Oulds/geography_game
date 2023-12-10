@@ -3,7 +3,7 @@ class Map {
     this.ele = ele;
     this.displayHome();
   }
-
+  
   playMusic() {
     // Music player
     var backgroundMusic = document.getElementById("backgroundMusic");
