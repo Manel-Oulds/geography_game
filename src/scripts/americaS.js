@@ -10,7 +10,7 @@ class AmericaS {
 
   startTimer() {
     const Swal = require('sweetalert2')
-    this.seconds = 15;
+    this.seconds = 80;
     let timer = document.getElementById("timer");
    
     let div_timer = `<img style="width:50px; height:50px; " src="././assets/timer.png"/> <p> ${this.seconds} </p>`;

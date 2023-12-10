@@ -9,7 +9,7 @@ class Asia {
 
   startTimer() {
     const Swal = require("sweetalert2");
-    this.seconds = 100;
+    this.seconds = 200;
     let timer = document.getElementById("timer");
 
     let div_timer = `<img style="width:50px; height:50px; " src="././assets/timer.png"/> <p> ${this.seconds} </p>`;
