@@ -34,13 +34,12 @@ class Map {
             map.setAttribute("id","map")
             my_div.appendChild(map);
            }
-
-
         if (!document.getElementById("play")){
         let play_div = document.createElement("div");
         play_div.setAttribute("id","play");
         (document.getElementById("container")).appendChild(play_div);
-        play_div.style.opacity = -1}
+        // play_div.style.opacity = -1
+    }
 
          
         fetch('./assets/world.svg')
@@ -75,7 +74,7 @@ class Map {
                         let image = document.createElement("img")
                         image.setAttribute("src",`${flags[(country.id)]}`);
                         info.appendChild(image);
-                        info.style.opacity = 1;
+                        // info.style.opacity = 1;
 
                         let flag = document.createElement("p"); 
                         flag.classList.add("info")
@@ -90,8 +89,15 @@ class Map {
            
                 country.addEventListener("mouseleave", function () {
                     let info = document.getElementById("play");
-                    info.innerText = ''
-                    info.style.opacity = -1
+                    let isVisible = true;
+                    function toggleVisibility() {
+                        isVisible = !isVisible;
+                        info.style.visibility = isVisible ? 'visible' : 'hidden';
+                      }
+                      setInterval(toggleVisibility, 1000);
+                    info.innerText='Hover over a country to see its information'
+                
+                    // info.style.opacity = -1
 
              })
             
@@ -108,11 +114,14 @@ class Map {
         const worldButton = document.getElementById("world_btn");
         worldButton.addEventListener("click", () => {
             (document.getElementById("score_container")).style.display = "none";
-            if(document.getElementById("play")) document.getElementById("play").style.opacity= -1;
+            // if(document.getElementById("play")) document.getElementById("play").style.opacity= -1;
            if(document.getElementsByClassName("main_buttons")[0]) (document.getElementsByClassName("main_buttons")[0]).style.display = 'none';
            document.getElementsByClassName("small-container")[0].style.display ="none";
       document.getElementById("title").style.display =
       "none";
+
+      
+
             this.fetchData();
         });
 
