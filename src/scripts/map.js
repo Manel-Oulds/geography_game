@@ -90,10 +90,7 @@ class Map {
                 country.addEventListener("mouseleave", function () {
                     let info = document.getElementById("play");
                     let isVisible = true;
-                    function toggleVisibility() {
-                        isVisible = !isVisible;
-                        info.style.visibility = isVisible ? 'visible' : 'hidden';
-                      }
+                   
                       setInterval(toggleVisibility, 1000);
                     info.innerText='Hover over a country to see its information'
                 
